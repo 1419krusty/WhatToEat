@@ -7,3 +7,13 @@
 //
 
 import Foundation
+
+class Restaurant : NSObject {
+   var name: String
+   var meals: [String]
+   
+   init(name: String, meals: [String]) {
+      self.name = name
+      self.meals = meals // TODO: deep copy
+   }
+}
