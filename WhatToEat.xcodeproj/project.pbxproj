@@ -14,6 +14,7 @@
 		1AD8FAD81B0505FB00DE8A87 /* WhatToEatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD8FAD71B0505FB00DE8A87 /* WhatToEatTests.swift */; };
 		1AD8FAE41B050BC200DE8A87 /* RestaurantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD8FAE31B050BC200DE8A87 /* RestaurantViewController.swift */; };
 		1AD8FAE61B050C3000DE8A87 /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD8FAE51B050C3000DE8A87 /* Restaurant.swift */; };
+		1AD8FAE81B0513F200DE8A87 /* AddRestaurantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD8FAE71B0513F200DE8A87 /* AddRestaurantViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +39,7 @@
 		1AD8FAD71B0505FB00DE8A87 /* WhatToEatTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatToEatTests.swift; sourceTree = "<group>"; };
 		1AD8FAE31B050BC200DE8A87 /* RestaurantViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RestaurantViewController.swift; path = Restaurant/RestaurantViewController.swift; sourceTree = "<group>"; };
 		1AD8FAE51B050C3000DE8A87 /* Restaurant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Restaurant.swift; path = Restaurant/Restaurant.swift; sourceTree = "<group>"; };
+		1AD8FAE71B0513F200DE8A87 /* AddRestaurantViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddRestaurantViewController.swift; path = Restaurant/AddRestaurantViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +122,7 @@
 			children = (
 				1AD8FAE31B050BC200DE8A87 /* RestaurantViewController.swift */,
 				1AD8FAE51B050C3000DE8A87 /* Restaurant.swift */,
+				1AD8FAE71B0513F200DE8A87 /* AddRestaurantViewController.swift */,
 			);
 			name = Restaurant;
 			sourceTree = "<group>";
@@ -234,6 +237,7 @@
 				1AD8FAC21B0505FA00DE8A87 /* AppDelegate.swift in Sources */,
 				1AD8FAE41B050BC200DE8A87 /* RestaurantViewController.swift in Sources */,
 				1AD8FAE61B050C3000DE8A87 /* Restaurant.swift in Sources */,
+				1AD8FAE81B0513F200DE8A87 /* AddRestaurantViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

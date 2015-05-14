@@ -10,7 +10,7 @@ import UIKit
 
 class RestaurantViewController: UITableViewController {
 
-   let restaurants : [Restaurant] = [Restaurant(name: "Pizza hutt", meals: ["pizza", "more pizza"]), Restaurant(name: "El Az", meals: ["burrito", "taco"])]
+   var restaurants : [Restaurant] = [Restaurant(name: "Pizza hutt", meals: ["pizza", "more pizza"]), Restaurant(name: "El Az", meals: ["burrito", "taco"])]
    
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +26,19 @@ class RestaurantViewController: UITableViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+
+   @IBAction func saveNewRestaurant(segue:UIStoryboardSegue){
+      if let addRestController = segue.sourceViewController as? AddRestaurantViewController {
+         restaurants.append(addRestController.rest!)
+         
+         let indexPath = NSIndexPath(forItem: restaurants.count-1, inSection: 0)
+         tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+      }
+   }
+   
+   @IBAction func cancelNewRestaurant(segue:UIStoryboardSegue){
+      
+   }
 
     // MARK: - Table view data source
 

@@ -4,7 +4,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
     </dependencies>
     <scenes>
-        <!--Restaurant View Controller-->
+        <!--Restaurants-->
         <scene sceneID="PKO-G7-bjv">
             <objects>
                 <tableViewController id="3Na-t7-Dik" customClass="RestaurantViewController" customModule="WhatToEat" customModuleProvider="target" sceneMemberID="viewController">
@@ -35,11 +35,62 @@
                             <outlet property="delegate" destination="3Na-t7-Dik" id="0Nm-2A-Fxn"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="Pua-fD-bpv"/>
+                    <navigationItem key="navigationItem" title="Restaurants" id="Pua-fD-bpv">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="7XC-XC-Ad8">
+                            <connections>
+                                <segue destination="ZXY-Hi-vmv" kind="modal" id="12l-jL-Cyo"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="D0m-wg-Bn9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="968" y="376"/>
+        </scene>
+        <!--Add Restaurant-->
+        <scene sceneID="6mI-kS-Ij5">
+            <objects>
+                <viewController id="oJq-Rw-Zy2" customClass="AddRestaurantViewController" customModule="WhatToEat" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="fZO-OO-9pr">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Restaurant name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5Dr-9g-lea">
+                                <rect key="frame" x="16" y="91" width="288" height="25"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="VHw-uG-sA2">
+                                <rect key="frame" x="16" y="143" width="288" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Add Restaurant" id="MRB-B0-mb4">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="SyN-Wy-NWR">
+                            <connections>
+                                <segue destination="9CT-Vo-oXB" kind="unwind" unwindAction="cancelNewRestaurant:" id="Pur-Hc-mhG"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="w2J-ld-qv5">
+                            <connections>
+                                <segue destination="9CT-Vo-oXB" kind="unwind" identifier="SaveRestaurant" unwindAction="saveNewRestaurant:" id="tPB-Wa-shs"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="restaurantName" destination="VHw-uG-sA2" id="BqP-ni-jI1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bxg-ld-pVf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="9CT-Vo-oXB" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="1795" y="380"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="QTx-dy-6FZ">
@@ -58,6 +109,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Oaa-MR-bO2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="436" y="376"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="l0q-Xf-N3r">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ZXY-Hi-vmv" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="1IP-Fp-hZt">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="oJq-Rw-Zy2" kind="relationship" relationship="rootViewController" id="C0i-Oo-WNg"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="d0E-WD-Z3V" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1370" y="380"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
