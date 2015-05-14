@@ -15,6 +15,7 @@
 		1AD8FAE41B050BC200DE8A87 /* RestaurantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD8FAE31B050BC200DE8A87 /* RestaurantViewController.swift */; };
 		1AD8FAE61B050C3000DE8A87 /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD8FAE51B050C3000DE8A87 /* Restaurant.swift */; };
 		1AD8FAE81B0513F200DE8A87 /* AddRestaurantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD8FAE71B0513F200DE8A87 /* AddRestaurantViewController.swift */; };
+		1AD8FAEC1B056ADE00DE8A87 /* MealViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD8FAEB1B056ADE00DE8A87 /* MealViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,7 @@
 		1AD8FAE31B050BC200DE8A87 /* RestaurantViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RestaurantViewController.swift; path = Restaurant/RestaurantViewController.swift; sourceTree = "<group>"; };
 		1AD8FAE51B050C3000DE8A87 /* Restaurant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Restaurant.swift; path = Restaurant/Restaurant.swift; sourceTree = "<group>"; };
 		1AD8FAE71B0513F200DE8A87 /* AddRestaurantViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddRestaurantViewController.swift; path = Restaurant/AddRestaurantViewController.swift; sourceTree = "<group>"; };
+		1AD8FAEB1B056ADE00DE8A87 /* MealViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MealViewController.swift; path = Meal/MealViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +132,7 @@
 		1AD8FAE21B050A6100DE8A87 /* Meal */ = {
 			isa = PBXGroup;
 			children = (
+				1AD8FAEB1B056ADE00DE8A87 /* MealViewController.swift */,
 			);
 			name = Meal;
 			sourceTree = "<group>";
@@ -235,6 +238,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1AD8FAC21B0505FA00DE8A87 /* AppDelegate.swift in Sources */,
+				1AD8FAEC1B056ADE00DE8A87 /* MealViewController.swift in Sources */,
 				1AD8FAE41B050BC200DE8A87 /* RestaurantViewController.swift in Sources */,
 				1AD8FAE61B050C3000DE8A87 /* Restaurant.swift in Sources */,
 				1AD8FAE81B0513F200DE8A87 /* AddRestaurantViewController.swift in Sources */,
