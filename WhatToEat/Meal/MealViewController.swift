@@ -27,6 +27,12 @@ class MealViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
 
+   @IBAction func saveNewMeal(segue:UIStoryboardSegue){
+   }
+   
+   @IBAction func cancelNewMeal(segue:UIStoryboardSegue){
+   }
+   
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {

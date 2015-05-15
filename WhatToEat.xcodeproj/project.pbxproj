@@ -16,6 +16,8 @@
 		1AD8FAE61B050C3000DE8A87 /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD8FAE51B050C3000DE8A87 /* Restaurant.swift */; };
 		1AD8FAE81B0513F200DE8A87 /* AddRestaurantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD8FAE71B0513F200DE8A87 /* AddRestaurantViewController.swift */; };
 		1AD8FAEC1B056ADE00DE8A87 /* MealViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD8FAEB1B056ADE00DE8A87 /* MealViewController.swift */; };
+		1AD8FAF11B056F8200DE8A87 /* 2StarsSmall.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AD8FAEF1B056F8200DE8A87 /* 2StarsSmall.png */; };
+		1AD8FAF21B056F8200DE8A87 /* 2StarsSmall@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AD8FAF01B056F8200DE8A87 /* 2StarsSmall@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +44,8 @@
 		1AD8FAE51B050C3000DE8A87 /* Restaurant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Restaurant.swift; path = Restaurant/Restaurant.swift; sourceTree = "<group>"; };
 		1AD8FAE71B0513F200DE8A87 /* AddRestaurantViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddRestaurantViewController.swift; path = Restaurant/AddRestaurantViewController.swift; sourceTree = "<group>"; };
 		1AD8FAEB1B056ADE00DE8A87 /* MealViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MealViewController.swift; path = Meal/MealViewController.swift; sourceTree = "<group>"; };
+		1AD8FAEF1B056F8200DE8A87 /* 2StarsSmall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2StarsSmall.png; sourceTree = "<group>"; };
+		1AD8FAF01B056F8200DE8A87 /* 2StarsSmall@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "2StarsSmall@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +101,7 @@
 		1AD8FABF1B0505FA00DE8A87 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				1AD8FAEE1B056F4100DE8A87 /* images */,
 				1AD8FAC01B0505FA00DE8A87 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -135,6 +140,15 @@
 				1AD8FAEB1B056ADE00DE8A87 /* MealViewController.swift */,
 			);
 			name = Meal;
+			sourceTree = "<group>";
+		};
+		1AD8FAEE1B056F4100DE8A87 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				1AD8FAEF1B056F8200DE8A87 /* 2StarsSmall.png */,
+				1AD8FAF01B056F8200DE8A87 /* 2StarsSmall@2x.png */,
+			);
+			name = images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -218,7 +232,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				1AD8FAC71B0505FA00DE8A87 /* Main.storyboard in Resources */,
+				1AD8FAF21B056F8200DE8A87 /* 2StarsSmall@2x.png in Resources */,
 				1AD8FACC1B0505FA00DE8A87 /* LaunchScreen.xib in Resources */,
+				1AD8FAF11B056F8200DE8A87 /* 2StarsSmall.png in Resources */,
 				1AD8FAC91B0505FA00DE8A87 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
