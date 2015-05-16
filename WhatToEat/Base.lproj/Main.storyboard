@@ -180,7 +180,7 @@
         <!--Add Meal-->
         <scene sceneID="16x-pn-HFM">
             <objects>
-                <viewController id="d6L-91-Etq" sceneMemberID="viewController">
+                <viewController id="d6L-91-Etq" customClass="AddMealViewController" customModule="WhatToEat" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Xa9-ph-84M">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
