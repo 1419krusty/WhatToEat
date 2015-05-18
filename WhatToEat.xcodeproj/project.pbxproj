@@ -15,11 +15,11 @@
 		1AD8FAE41B050BC200DE8A87 /* RestaurantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD8FAE31B050BC200DE8A87 /* RestaurantViewController.swift */; };
 		1AD8FAE61B050C3000DE8A87 /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD8FAE51B050C3000DE8A87 /* Restaurant.swift */; };
 		1AD8FAE81B0513F200DE8A87 /* AddRestaurantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD8FAE71B0513F200DE8A87 /* AddRestaurantViewController.swift */; };
-		1AD8FAEC1B056ADE00DE8A87 /* MealViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD8FAEB1B056ADE00DE8A87 /* MealViewController.swift */; };
-		1AD8FAF11B056F8200DE8A87 /* 2StarsSmall.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AD8FAEF1B056F8200DE8A87 /* 2StarsSmall.png */; };
-		1AD8FAF21B056F8200DE8A87 /* 2StarsSmall@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AD8FAF01B056F8200DE8A87 /* 2StarsSmall@2x.png */; };
-		1AD8FAF41B0770F100DE8A87 /* AddMealViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD8FAF31B0770F100DE8A87 /* AddMealViewController.swift */; };
-		1AD8FAF61B07715E00DE8A87 /* EditMealViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD8FAF51B07715E00DE8A87 /* EditMealViewController.swift */; };
+		1AD8FB0F1B09851B00DE8A87 /* 2StarsSmall.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AD8FB0D1B09851B00DE8A87 /* 2StarsSmall.png */; };
+		1AD8FB101B09851B00DE8A87 /* 2StarsSmall@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AD8FB0E1B09851B00DE8A87 /* 2StarsSmall@2x.png */; };
+		1AD8FB141B09853900DE8A87 /* AddMealViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD8FB111B09853900DE8A87 /* AddMealViewController.swift */; };
+		1AD8FB151B09853900DE8A87 /* EditMealViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD8FB121B09853900DE8A87 /* EditMealViewController.swift */; };
+		1AD8FB161B09853900DE8A87 /* MealViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD8FB131B09853900DE8A87 /* MealViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,11 +45,11 @@
 		1AD8FAE31B050BC200DE8A87 /* RestaurantViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RestaurantViewController.swift; path = Restaurant/RestaurantViewController.swift; sourceTree = "<group>"; };
 		1AD8FAE51B050C3000DE8A87 /* Restaurant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Restaurant.swift; path = Restaurant/Restaurant.swift; sourceTree = "<group>"; };
 		1AD8FAE71B0513F200DE8A87 /* AddRestaurantViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddRestaurantViewController.swift; path = Restaurant/AddRestaurantViewController.swift; sourceTree = "<group>"; };
-		1AD8FAEB1B056ADE00DE8A87 /* MealViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MealViewController.swift; path = Meal/MealViewController.swift; sourceTree = "<group>"; };
-		1AD8FAEF1B056F8200DE8A87 /* 2StarsSmall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2StarsSmall.png; sourceTree = "<group>"; };
-		1AD8FAF01B056F8200DE8A87 /* 2StarsSmall@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "2StarsSmall@2x.png"; sourceTree = "<group>"; };
-		1AD8FAF31B0770F100DE8A87 /* AddMealViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddMealViewController.swift; path = Meal/AddMealViewController.swift; sourceTree = "<group>"; };
-		1AD8FAF51B07715E00DE8A87 /* EditMealViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EditMealViewController.swift; path = Meal/EditMealViewController.swift; sourceTree = "<group>"; };
+		1AD8FB0D1B09851B00DE8A87 /* 2StarsSmall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2StarsSmall.png; sourceTree = "<group>"; };
+		1AD8FB0E1B09851B00DE8A87 /* 2StarsSmall@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "2StarsSmall@2x.png"; sourceTree = "<group>"; };
+		1AD8FB111B09853900DE8A87 /* AddMealViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddMealViewController.swift; path = Meal/Controllers/AddMealViewController.swift; sourceTree = "<group>"; };
+		1AD8FB121B09853900DE8A87 /* EditMealViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EditMealViewController.swift; path = Meal/Controllers/EditMealViewController.swift; sourceTree = "<group>"; };
+		1AD8FB131B09853900DE8A87 /* MealViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MealViewController.swift; path = Meal/Controllers/MealViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,7 +105,7 @@
 		1AD8FABF1B0505FA00DE8A87 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				1AD8FAEE1B056F4100DE8A87 /* images */,
+				1AD8FB0C1B09851B00DE8A87 /* Images */,
 				1AD8FAC01B0505FA00DE8A87 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -141,20 +141,36 @@
 		1AD8FAE21B050A6100DE8A87 /* Meal */ = {
 			isa = PBXGroup;
 			children = (
-				1AD8FAEB1B056ADE00DE8A87 /* MealViewController.swift */,
-				1AD8FAF31B0770F100DE8A87 /* AddMealViewController.swift */,
-				1AD8FAF51B07715E00DE8A87 /* EditMealViewController.swift */,
+				1AD8FB061B0984E900DE8A87 /* Models */,
+				1AD8FB051B0984E200DE8A87 /* Controllers */,
 			);
 			name = Meal;
 			sourceTree = "<group>";
 		};
-		1AD8FAEE1B056F4100DE8A87 /* images */ = {
+		1AD8FB051B0984E200DE8A87 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				1AD8FAEF1B056F8200DE8A87 /* 2StarsSmall.png */,
-				1AD8FAF01B056F8200DE8A87 /* 2StarsSmall@2x.png */,
+				1AD8FB111B09853900DE8A87 /* AddMealViewController.swift */,
+				1AD8FB121B09853900DE8A87 /* EditMealViewController.swift */,
+				1AD8FB131B09853900DE8A87 /* MealViewController.swift */,
 			);
-			name = images;
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		1AD8FB061B0984E900DE8A87 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		1AD8FB0C1B09851B00DE8A87 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				1AD8FB0D1B09851B00DE8A87 /* 2StarsSmall.png */,
+				1AD8FB0E1B09851B00DE8A87 /* 2StarsSmall@2x.png */,
+			);
+			path = Images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -238,9 +254,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				1AD8FAC71B0505FA00DE8A87 /* Main.storyboard in Resources */,
-				1AD8FAF21B056F8200DE8A87 /* 2StarsSmall@2x.png in Resources */,
+				1AD8FB101B09851B00DE8A87 /* 2StarsSmall@2x.png in Resources */,
 				1AD8FACC1B0505FA00DE8A87 /* LaunchScreen.xib in Resources */,
-				1AD8FAF11B056F8200DE8A87 /* 2StarsSmall.png in Resources */,
+				1AD8FB0F1B09851B00DE8A87 /* 2StarsSmall.png in Resources */,
 				1AD8FAC91B0505FA00DE8A87 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -259,11 +275,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1AD8FAF61B07715E00DE8A87 /* EditMealViewController.swift in Sources */,
 				1AD8FAC21B0505FA00DE8A87 /* AppDelegate.swift in Sources */,
-				1AD8FAEC1B056ADE00DE8A87 /* MealViewController.swift in Sources */,
 				1AD8FAE41B050BC200DE8A87 /* RestaurantViewController.swift in Sources */,
-				1AD8FAF41B0770F100DE8A87 /* AddMealViewController.swift in Sources */,
+				1AD8FB141B09853900DE8A87 /* AddMealViewController.swift in Sources */,
+				1AD8FB161B09853900DE8A87 /* MealViewController.swift in Sources */,
+				1AD8FB151B09853900DE8A87 /* EditMealViewController.swift in Sources */,
 				1AD8FAE61B050C3000DE8A87 /* Restaurant.swift in Sources */,
 				1AD8FAE81B0513F200DE8A87 /* AddRestaurantViewController.swift in Sources */,
 			);
@@ -461,6 +477,7 @@
 				1AD8FADD1B0505FB00DE8A87 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1AD8FADE1B0505FB00DE8A87 /* Build configuration list for PBXNativeTarget "WhatToEatTests" */ = {
 			isa = XCConfigurationList;
@@ -469,6 +486,7 @@
 				1AD8FAE01B0505FB00DE8A87 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
