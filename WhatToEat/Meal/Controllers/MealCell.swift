@@ -10,7 +10,7 @@ import UIKit
 
 class MealCell: UITableViewCell {
 
-   @IBOutlet weak var nameLabel: UILabel!
+   @IBOutlet weak var mealNameLabel: UILabel!
    @IBOutlet weak var ratingImageView: UIImageView!
    
     override func awakeFromNib() {

@@ -10,7 +10,7 @@ import UIKit
 
 class MealViewController: UITableViewController {
 
-   var meals : [String] = ["burrito", "taco"]
+   var meals : [Meal] = [Meal(name: "burrito", rating: 2, comment: "good"), Meal(name: "taco", rating: 3, comment: "ok")]
    
    override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,14 +48,32 @@ class MealViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("MealCell", forIndexPath: indexPath) as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("MealCell", forIndexPath: indexPath) as! MealCell
 
-      let meal = meals[indexPath.row] as String
-      cell.textLabel!.text = meal
+      let meal = meals[indexPath.row] as Meal
+      cell.mealNameLabel!.text = meal.name
+      cell.ratingImageView.image = imageForRating(meal.rating)
 
         return cell
     }
 
+   func imageForRating(rating:Int) -> UIImage? {
+      switch rating {
+      case 1:
+         return UIImage(named: "1StarSmall")
+      case 2:
+         return UIImage(named: "2StarsSmall")
+      case 3:
+         return UIImage(named: "3StarsSmall")
+      case 4:
+         return UIImage(named: "4StarsSmall")
+      case 5:
+         return UIImage(named: "5StarsSmall")
+      default:
+         return nil
+      }
+   }
+   
     /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {

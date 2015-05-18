@@ -161,6 +161,8 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="mealNameLabel" destination="OQ9-2t-6nt" id="jD8-Fw-0V4"/>
+                                    <outlet property="ratingImageView" destination="w8d-vt-JUO" id="p2X-0y-Lu8"/>
                                     <segue destination="YxP-Pc-izJ" kind="push" id="7Tu-yB-fRQ"/>
                                 </connections>
                             </tableViewCell>
