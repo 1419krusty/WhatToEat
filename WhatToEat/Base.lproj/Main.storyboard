@@ -205,7 +205,7 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="2StarsSmall.png" id="ldT-ZQ-gTi">
+                            <imageView contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1StarSmall.png" id="ldT-ZQ-gTi">
                                 <rect key="frame" x="40" y="220" width="233" height="47"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <gestureRecognizers/>
@@ -239,16 +239,18 @@
                     <navigationItem key="navigationItem" title="Add Meal" id="1pj-TB-QoW">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="ryN-cq-3eC">
                             <connections>
-                                <segue destination="u5v-WW-CDY" kind="unwind" unwindAction="cancelNewMeal:" id="vF5-se-lcy"/>
+                                <segue destination="u5v-WW-CDY" kind="unwind" identifier="CancelAddMeal" unwindAction="cancelNewMeal:" id="vF5-se-lcy"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="qWU-y2-KcU">
                             <connections>
-                                <segue destination="u5v-WW-CDY" kind="unwind" unwindAction="saveNewMeal:" id="QH0-Qu-Xmg"/>
+                                <segue destination="u5v-WW-CDY" kind="unwind" identifier="SaveNewMeal" unwindAction="saveNewMeal:" id="QH0-Qu-Xmg"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="mealCommentsText" destination="3Gt-KR-6Zg" id="KHj-VV-jBY"/>
+                        <outlet property="mealNameText" destination="V41-Yc-pEj" id="MFV-UP-ytk"/>
                         <outlet property="ratingImage" destination="ldT-ZQ-gTi" id="JyL-FP-D4D"/>
                     </connections>
                 </viewController>
@@ -350,6 +352,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="1StarSmall.png" width="81" height="15"/>
         <image name="2StarsSmall.png" width="81" height="15"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

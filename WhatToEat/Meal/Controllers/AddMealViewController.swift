@@ -10,9 +10,12 @@ import UIKit
 
 class AddMealViewController: UIViewController {
 
-   var rating:Int = 2
-   
+   @IBOutlet weak var mealNameText: UITextField!
    @IBOutlet weak var ratingImage: UIImageView!
+   @IBOutlet weak var mealCommentsText: UITextField!
+   
+   var newMeal:Meal!
+   var rating:Int = 1
    
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +36,14 @@ class AddMealViewController: UIViewController {
       }
       
       ratingImage.image = imageForRating(rating)
+   }
+   
+   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+      if segue.identifier == "SaveNewMeal" {
+         let name = self.mealNameText.text
+         let comments = self.mealCommentsText.text
+         self.newMeal = Meal(name: name, rating: self.rating, comment: comments)
+      }
    }
    
    // TODO: move to a custom UIImageView

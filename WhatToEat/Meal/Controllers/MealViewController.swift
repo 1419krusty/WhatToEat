@@ -28,6 +28,12 @@ class MealViewController: UITableViewController {
     }
 
    @IBAction func saveNewMeal(segue:UIStoryboardSegue){
+      if let addMealVC  = segue.sourceViewController as? AddMealViewController {
+         meals.append( addMealVC.newMeal)
+         
+         let indexPath = NSIndexPath(forRow: meals.count-1, inSection: 0)
+         tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+      }
    }
    
    @IBAction func cancelNewMeal(segue:UIStoryboardSegue){
