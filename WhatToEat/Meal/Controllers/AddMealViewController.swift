@@ -10,6 +10,10 @@ import UIKit
 
 class AddMealViewController: UIViewController {
 
+   var rating:Int = 2
+   
+   @IBOutlet weak var ratingImage: UIImageView!
+   
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -20,8 +24,35 @@ class AddMealViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
+   
+   @IBAction func handleTap(recognizer:UITapGestureRecognizer) {
+      if rating == 5 {
+         self.rating = 1
+      } else {
+        self.rating++
+      }
+      
+      ratingImage.image = imageForRating(rating)
+   }
+   
+   // TODO: move to a custom UIImageView
+   func imageForRating(rating:Int) -> UIImage? {
+      switch rating {
+      case 1:
+         return UIImage(named: "1StarSmall")
+      case 2:
+         return UIImage(named: "2StarsSmall")
+      case 3:
+         return UIImage(named: "3StarsSmall")
+      case 4:
+         return UIImage(named: "4StarsSmall")
+      case 5:
+         return UIImage(named: "5StarsSmall")
+      default:
+         return nil
+      }
+   }
+   
     /*
     // MARK: - Navigation
 
