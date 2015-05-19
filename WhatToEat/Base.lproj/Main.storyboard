@@ -239,7 +239,7 @@
                     <navigationItem key="navigationItem" title="Add Meal" id="1pj-TB-QoW">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="ryN-cq-3eC">
                             <connections>
-                                <segue destination="u5v-WW-CDY" kind="unwind" identifier="CancelAddMeal" unwindAction="cancelNewMeal:" id="vF5-se-lcy"/>
+                                <segue destination="u5v-WW-CDY" kind="unwind" identifier="CancelNewMeal" unwindAction="cancelNewMeal:" id="vF5-se-lcy"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="qWU-y2-KcU">
@@ -317,7 +317,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Edit Meal" id="9r5-Km-bjR">
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="g7o-1J-anM"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="g7o-1J-anM">
+                            <connections>
+                                <segue destination="u6W-Yx-Lpo" kind="unwind" identifier="SaveEdittedMeal" unwindAction="saveEdittedMeal:" id="dEa-Yi-ZbD"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="mealCommentText" destination="tfi-FZ-sPd" id="dyW-3f-DzV"/>
@@ -326,6 +330,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LJm-Bf-KPG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="u6W-Yx-Lpo" userLabel="Exit" sceneMemberID="exit"/>
                 <tapGestureRecognizer id="qG1-GI-Q6D" userLabel="Tap - ratings">
                     <connections>
                         <action selector="handleTap:" destination="YxP-Pc-izJ" id="hhv-sY-PUa"/>

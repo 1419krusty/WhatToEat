@@ -37,7 +37,7 @@ class RestaurantViewController: UITableViewController {
    }
    
    @IBAction func cancelNewRestaurant(segue:UIStoryboardSegue){
-      
+      // DO NOTHING
    }
 
     // MARK: - Table view data source

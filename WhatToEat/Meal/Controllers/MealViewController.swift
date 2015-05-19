@@ -37,6 +37,11 @@ class MealViewController: UITableViewController {
    }
    
    @IBAction func cancelNewMeal(segue:UIStoryboardSegue){
+      // DO NOTHING
+   }
+   
+   @IBAction func saveEdittedMeal(segue:UIStoryboardSegue){
+       self.tableView.reloadData()
    }
    
     // MARK: - Table view data source

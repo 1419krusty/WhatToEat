@@ -44,6 +44,20 @@ class EditMealViewController: UIViewController {
       ratingImageView.image = imageForRating(rating)
    }
    
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+      if segue.identifier == "SaveEdittedMeal" {
+         let name = self.mealNameText.text
+         let comments = self.mealCommentText.text
+         
+         self.initialMeal.name = name
+         self.initialMeal.rating = self.rating
+         self.initialMeal.comment = comments
+      }
+    }
+   
    // TODO: move to a custom UIImageView
    func imageForRating(rating:Int) -> UIImage? {
       switch rating {
@@ -61,15 +75,5 @@ class EditMealViewController: UIViewController {
          return nil
       }
    }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
