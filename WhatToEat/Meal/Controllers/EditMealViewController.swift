@@ -10,13 +10,22 @@ import UIKit
 
 class EditMealViewController: UIViewController {
 
-   var rating:Int = 2
+   var initialMeal:Meal!
+   var rating:Int = 1
    
+   @IBOutlet weak var mealNameText: UITextField!
    @IBOutlet weak var ratingImageView: UIImageView!
+   @IBOutlet weak var mealCommentText: UITextField!
    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+      self.mealNameText.text = initialMeal.name
+      self.mealCommentText.text = initialMeal.comment
+      
+      self.rating = initialMeal.rating
+      self.ratingImageView.image = imageForRating(rating)
+      
         // Do any additional setup after loading the view.
     }
 

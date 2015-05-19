@@ -163,7 +163,7 @@
                                 <connections>
                                     <outlet property="mealNameLabel" destination="OQ9-2t-6nt" id="jD8-Fw-0V4"/>
                                     <outlet property="ratingImageView" destination="w8d-vt-JUO" id="p2X-0y-Lu8"/>
-                                    <segue destination="YxP-Pc-izJ" kind="push" id="7Tu-yB-fRQ"/>
+                                    <segue destination="YxP-Pc-izJ" kind="push" identifier="EditMeal" id="7Tu-yB-fRQ"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -320,6 +320,8 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="g7o-1J-anM"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="mealCommentText" destination="tfi-FZ-sPd" id="dyW-3f-DzV"/>
+                        <outlet property="mealNameText" destination="z6g-iQ-UWd" id="BMX-dE-ide"/>
                         <outlet property="ratingImageView" destination="Xrn-5v-F7W" id="5kk-KK-J2Y"/>
                     </connections>
                 </viewController>
