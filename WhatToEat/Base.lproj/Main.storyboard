@@ -29,7 +29,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="Xe8-hu-Kd2" kind="push" id="JuA-HF-Zt6"/>
+                                    <segue destination="Xe8-hu-Kd2" kind="push" identifier="SelectRestaurant" id="JuA-HF-Zt6"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

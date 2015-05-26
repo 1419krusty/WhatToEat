@@ -10,7 +10,8 @@ import UIKit
 
 class MealViewController: UITableViewController {
 
-   var meals : [Meal] = [Meal(name: "burrito", rating: 2, comment: "good"), Meal(name: "taco", rating: 3, comment: "ok")]
+   var restaurants : [Restaurant]!
+   var restaurantIndex : Int!
    
    override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,9 +30,11 @@ class MealViewController: UITableViewController {
 
    @IBAction func saveNewMeal(segue:UIStoryboardSegue){
       if let addMealVC  = segue.sourceViewController as? AddMealViewController {
-         meals.append( addMealVC.newMeal)
+         restaurants[restaurantIndex].meals.append( addMealVC.newMeal )
          
-         let indexPath = NSIndexPath(forRow: meals.count-1, inSection: 0)
+         saveMyStuff()
+         
+         let indexPath = NSIndexPath(forRow: restaurants[restaurantIndex].meals.count-1, inSection: 0)
          tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
       }
    }
@@ -42,6 +45,7 @@ class MealViewController: UITableViewController {
    
    @IBAction func saveEdittedMeal(segue:UIStoryboardSegue){
        self.tableView.reloadData()
+      saveMyStuff()
    }
    
     // MARK: - Table view data source
@@ -55,13 +59,13 @@ class MealViewController: UITableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        return meals.count
+        return restaurants[restaurantIndex].meals.count
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("MealCell", forIndexPath: indexPath) as! MealCell
 
-      let meal = meals[indexPath.row] as Meal
+      let meal = restaurants[restaurantIndex].meals[indexPath.row] as Meal
       cell.mealNameLabel!.text = meal.name
       cell.ratingImageView.image = imageForRating(meal.rating)
 
@@ -75,9 +79,19 @@ class MealViewController: UITableViewController {
       if segue.identifier == "EditMeal" {
          if let editMealVC = segue.destinationViewController as? EditMealViewController {
             var indexPath = self.tableView .indexPathForCell(sender as! UITableViewCell)
-            editMealVC.initialMeal = self.meals[indexPath!.row]
+            editMealVC.initialMeal = restaurants[restaurantIndex].meals[indexPath!.row]
          }
       }
+   }
+   
+   func saveMyStuff() {
+      
+      let saveData = NSKeyedArchiver.archivedDataWithRootObject(  restaurants);
+      let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true) as NSArray;
+      let documentsDirectory = paths.objectAtIndex(0) as! NSString;
+      let path = documentsDirectory.stringByAppendingPathComponent("Restaurants.plist");
+      
+      saveData.writeToFile(path, atomically: true);
    }
    
    func imageForRating(rating:Int) -> UIImage? {

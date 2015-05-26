@@ -8,12 +8,23 @@
 
 import Foundation
 
-class Restaurant : NSObject {
-   var name: String
-   var meals: [String]
+class Restaurant : NSObject, NSCoding {
+   var name: String?
+   var meals: [Meal] = []
    
-   init(name: String, meals: [String]) {
+   init(name: String, meals: [Meal]) {
       self.name = name
-      self.meals = meals // TODO: deep copy
+      self.meals = meals
+   }
+   
+   required convenience init(coder decoder: NSCoder) {
+      let name = decoder.decodeObjectForKey("name") as! String?
+      let meals = decoder.decodeObjectForKey("meals") as! [Meal]!
+      self.init(name:name!, meals:meals)
+   }
+   
+   func encodeWithCoder(coder: NSCoder) {
+      coder.encodeObject(self.name, forKey: "name")
+      coder.encodeObject(self.meals, forKey: "meals")
    }
 }

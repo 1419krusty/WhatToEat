@@ -26,10 +26,9 @@ class AddRestaurantViewController: UIViewController {
    
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
       if segue.identifier == "SaveRestaurant" {
-         rest = Restaurant(name: self.restaurantName.text, meals: [""])
+         rest = Restaurant(name: self.restaurantName.text, meals: [])
       }
     }
 }
