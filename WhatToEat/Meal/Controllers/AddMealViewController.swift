@@ -16,13 +16,30 @@ class AddMealViewController: UIViewController {
    
    var newMeal:Meal!
    var rating:Int = 1
+   var tapRecognizer:UITapGestureRecognizer!
    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+      
+      let nc:NSNotificationCenter  = NSNotificationCenter.defaultCenter()
+      
+      nc.addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
+      nc.addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
+      
+      tapRecognizer = UITapGestureRecognizer(target: self, action: "didTapAnywhere:")
     }
 
+   func keyboardWillShow(note:NSNotification ) {
+      self.view.addGestureRecognizer(tapRecognizer)
+   }
+   
+   func keyboardWillHide(note:NSNotification ) {
+      self.view.removeGestureRecognizer(tapRecognizer)
+   }
+   
+   func didTapAnywhere (recognizer:UITapGestureRecognizer){
+      self.view.endEditing(true)
+   }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
