@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="T7q-cj-vZo">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="T7q-cj-vZo">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Restaurants-->
@@ -54,20 +55,22 @@
         <scene sceneID="6mI-kS-Ij5">
             <objects>
                 <viewController id="oJq-Rw-Zy2" customClass="AddRestaurantViewController" customModule="WhatToEat" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Ufb-Lr-FOe"/>
+                        <viewControllerLayoutGuide type="bottom" id="i6u-vg-6mS"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="fZO-OO-9pr">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Restaurant name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5Dr-9g-lea">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Restaurant name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Dr-9g-lea">
                                 <rect key="frame" x="16" y="91" width="288" height="25"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="VHw-uG-sA2">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VHw-uG-sA2">
                                 <rect key="frame" x="16" y="143" width="288" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -147,16 +150,14 @@
                                     <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="meal name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="OQ9-2t-6nt">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="meal name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OQ9-2t-6nt">
                                             <rect key="frame" x="8" y="11" width="156" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="2StarsSmall.png" id="w8d-vt-JUO">
+                                        <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="2StarsSmall.png" translatesAutoresizingMaskIntoConstraints="NO" id="w8d-vt-JUO">
                                             <rect key="frame" x="172" y="10" width="115" height="22"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
                                     </subviews>
                                 </tableViewCellContentView>
@@ -188,53 +189,75 @@
         <scene sceneID="16x-pn-HFM">
             <objects>
                 <viewController id="d6L-91-Etq" customClass="AddMealViewController" customModule="WhatToEat" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="JAb-HX-c6I"/>
+                        <viewControllerLayoutGuide type="bottom" id="gur-hP-k9J"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Xa9-ph-84M">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="V41-Yc-pEj">
-                                <rect key="frame" x="16" y="119" width="288" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="V41-Yc-pEj">
+                                <rect key="frame" x="16" y="101" width="288" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Meal name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="TSy-Ab-qcM">
-                                <rect key="frame" x="16" y="90" width="288" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <imageView contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1StarSmall.png" id="ldT-ZQ-gTi">
-                                <rect key="frame" x="40" y="220" width="233" height="47"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1StarSmall.png" translatesAutoresizingMaskIntoConstraints="NO" id="ldT-ZQ-gTi">
+                                <rect key="frame" x="16" y="176" width="288" height="30"/>
                                 <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="rsL-xh-LEV"/>
+                                    <constraint firstAttribute="width" constant="288" id="tKf-5n-kRG"/>
+                                </constraints>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="HtO-Dq-ivp" appends="YES" id="7y3-NP-zZz"/>
                                 </connections>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rating" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="03m-x7-rSf">
-                                <rect key="frame" x="16" y="176" width="288" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rating" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="03m-x7-rSf">
+                                <rect key="frame" x="16" y="147" width="288" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Comments" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="M1Y-Lq-I9I">
-                                <rect key="frame" x="16" y="301" width="288" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Comments" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M1Y-Lq-I9I">
+                                <rect key="frame" x="16" y="222" width="288" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="3Gt-KR-6Zg">
-                                <rect key="frame" x="16" y="346" width="288" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3Gt-KR-6Zg">
+                                <rect key="frame" x="16" y="251" width="288" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Meal name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TSy-Ab-qcM">
+                                <rect key="frame" x="16" y="72" width="288" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="3Gt-KR-6Zg" firstAttribute="top" secondItem="M1Y-Lq-I9I" secondAttribute="bottom" constant="8" id="29z-jo-HNq"/>
+                            <constraint firstItem="ldT-ZQ-gTi" firstAttribute="leading" secondItem="03m-x7-rSf" secondAttribute="leading" id="5xC-Y6-aeM"/>
+                            <constraint firstItem="ldT-ZQ-gTi" firstAttribute="trailing" secondItem="03m-x7-rSf" secondAttribute="trailing" id="63y-zV-svL"/>
+                            <constraint firstItem="TSy-Ab-qcM" firstAttribute="leading" secondItem="Xa9-ph-84M" secondAttribute="leadingMargin" id="6gy-1Y-dn6"/>
+                            <constraint firstItem="V41-Yc-pEj" firstAttribute="top" secondItem="TSy-Ab-qcM" secondAttribute="bottom" constant="8" id="A5b-Av-qOe"/>
+                            <constraint firstItem="V41-Yc-pEj" firstAttribute="leading" secondItem="3Gt-KR-6Zg" secondAttribute="leading" id="DFR-rt-ydW"/>
+                            <constraint firstItem="TSy-Ab-qcM" firstAttribute="trailing" secondItem="Xa9-ph-84M" secondAttribute="trailingMargin" id="FvT-WF-psc"/>
+                            <constraint firstItem="V41-Yc-pEj" firstAttribute="leading" secondItem="M1Y-Lq-I9I" secondAttribute="leading" id="Glo-Gf-Wcp"/>
+                            <constraint firstItem="TSy-Ab-qcM" firstAttribute="top" secondItem="JAb-HX-c6I" secondAttribute="bottom" constant="8" id="Mon-5w-qYA"/>
+                            <constraint firstItem="03m-x7-rSf" firstAttribute="top" secondItem="V41-Yc-pEj" secondAttribute="bottom" constant="16" id="PAi-cE-iM1"/>
+                            <constraint firstItem="V41-Yc-pEj" firstAttribute="trailing" secondItem="03m-x7-rSf" secondAttribute="trailing" id="W3r-SL-h4s"/>
+                            <constraint firstItem="ldT-ZQ-gTi" firstAttribute="top" secondItem="03m-x7-rSf" secondAttribute="bottom" constant="8" id="WOv-tR-yYX"/>
+                            <constraint firstItem="V41-Yc-pEj" firstAttribute="trailing" secondItem="3Gt-KR-6Zg" secondAttribute="trailing" id="X1K-Oo-lA2"/>
+                            <constraint firstItem="TSy-Ab-qcM" firstAttribute="trailing" secondItem="V41-Yc-pEj" secondAttribute="trailing" id="Z2D-HS-yEo"/>
+                            <constraint firstItem="TSy-Ab-qcM" firstAttribute="leading" secondItem="V41-Yc-pEj" secondAttribute="leading" id="ZHe-lH-e1M"/>
+                            <constraint firstItem="V41-Yc-pEj" firstAttribute="leading" secondItem="03m-x7-rSf" secondAttribute="leading" id="a2w-fX-PWI"/>
+                            <constraint firstItem="M1Y-Lq-I9I" firstAttribute="top" secondItem="ldT-ZQ-gTi" secondAttribute="bottom" constant="16" id="e9c-76-18j"/>
+                            <constraint firstItem="V41-Yc-pEj" firstAttribute="trailing" secondItem="M1Y-Lq-I9I" secondAttribute="trailing" id="t2N-6Z-Jhz"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Add Meal" id="1pj-TB-QoW">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="ryN-cq-3eC">
@@ -268,46 +291,44 @@
         <scene sceneID="4jA-Vi-jCf">
             <objects>
                 <viewController id="YxP-Pc-izJ" customClass="EditMealViewController" customModule="WhatToEat" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="mQn-4w-ADb"/>
+                        <viewControllerLayoutGuide type="bottom" id="DDV-Kg-ibE"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="NUg-Wm-efq">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Meal" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Ffa-6k-KlH">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Meal" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ffa-6k-KlH">
                                 <rect key="frame" x="16" y="75" width="288" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="z6g-iQ-UWd">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="z6g-iQ-UWd">
                                 <rect key="frame" x="16" y="104" width="288" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="tfi-FZ-sPd">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tfi-FZ-sPd">
                                 <rect key="frame" x="16" y="269" width="288" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rating" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="exU-sd-VGJ">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Rating" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="exU-sd-VGJ">
                                 <rect key="frame" x="16" y="150" width="288" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Comments" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Eyd-nx-PmE">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Comments" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eyd-nx-PmE">
                                 <rect key="frame" x="16" y="227" width="288" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="2StarsSmall.png" id="Xrn-5v-F7W">
+                            <imageView contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="2StarsSmall.png" translatesAutoresizingMaskIntoConstraints="NO" id="Xrn-5v-F7W">
                                 <rect key="frame" x="48" y="179" width="209" height="46"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <gestureRecognizers/>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="qG1-GI-Q6D" appends="YES" id="wHc-wd-IzJ"/>
