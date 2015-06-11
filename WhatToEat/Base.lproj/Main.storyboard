@@ -164,7 +164,7 @@
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="2StarsSmall.png" translatesAutoresizingMaskIntoConstraints="NO" id="w8d-vt-JUO">
+                                        <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="1StarSmall" translatesAutoresizingMaskIntoConstraints="NO" id="w8d-vt-JUO">
                                             <rect key="frame" x="172" y="10" width="115" height="22"/>
                                         </imageView>
                                     </subviews>
@@ -210,7 +210,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <imageView contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1StarSmall.png" translatesAutoresizingMaskIntoConstraints="NO" id="ldT-ZQ-gTi">
+                            <imageView contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1StarSmall" translatesAutoresizingMaskIntoConstraints="NO" id="ldT-ZQ-gTi">
                                 <rect key="frame" x="16" y="176" width="288" height="30"/>
                                 <gestureRecognizers/>
                                 <constraints>
@@ -335,7 +335,7 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="2StarsSmall.png" translatesAutoresizingMaskIntoConstraints="NO" id="Xrn-5v-F7W">
+                            <imageView contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="2StarsSmall" translatesAutoresizingMaskIntoConstraints="NO" id="Xrn-5v-F7W">
                                 <rect key="frame" x="16" y="176" width="288" height="30"/>
                                 <gestureRecognizers/>
                                 <constraints>
@@ -412,8 +412,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="1StarSmall.png" width="81" height="15"/>
-        <image name="2StarsSmall.png" width="81" height="15"/>
+        <image name="1StarSmall" width="81" height="15"/>
+        <image name="2StarsSmall" width="81" height="15"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
