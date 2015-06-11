@@ -74,14 +74,31 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Comments" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y7H-49-e3n">
+                                <rect key="frame" x="16" y="147" width="288" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6xj-fd-FAO">
+                                <rect key="frame" x="16" y="176" width="288" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="VHw-uG-sA2" firstAttribute="top" secondItem="5Dr-9g-lea" secondAttribute="bottom" constant="8" id="GDz-eZ-YT5"/>
+                            <constraint firstItem="y7H-49-e3n" firstAttribute="top" secondItem="VHw-uG-sA2" secondAttribute="bottom" constant="16" id="HUT-NA-csV"/>
                             <constraint firstItem="5Dr-9g-lea" firstAttribute="leading" secondItem="fZO-OO-9pr" secondAttribute="leadingMargin" id="Lzx-B9-3zL"/>
+                            <constraint firstItem="5Dr-9g-lea" firstAttribute="trailing" secondItem="y7H-49-e3n" secondAttribute="trailing" id="N86-xY-czG"/>
+                            <constraint firstItem="5Dr-9g-lea" firstAttribute="leading" secondItem="6xj-fd-FAO" secondAttribute="leading" id="PPH-ET-3kR"/>
+                            <constraint firstItem="6xj-fd-FAO" firstAttribute="top" secondItem="y7H-49-e3n" secondAttribute="bottom" constant="8" id="PVi-mN-Gu4"/>
+                            <constraint firstItem="5Dr-9g-lea" firstAttribute="leading" secondItem="y7H-49-e3n" secondAttribute="leading" id="QcS-al-rzv"/>
                             <constraint firstItem="VHw-uG-sA2" firstAttribute="leading" secondItem="5Dr-9g-lea" secondAttribute="leading" id="VOO-sx-tbT"/>
                             <constraint firstItem="5Dr-9g-lea" firstAttribute="top" secondItem="Ufb-Lr-FOe" secondAttribute="bottom" constant="8" id="hsJ-MW-wzx"/>
                             <constraint firstItem="5Dr-9g-lea" firstAttribute="trailing" secondItem="fZO-OO-9pr" secondAttribute="trailingMargin" id="mTx-bh-TKW"/>
+                            <constraint firstItem="5Dr-9g-lea" firstAttribute="trailing" secondItem="6xj-fd-FAO" secondAttribute="trailing" id="uly-bZ-EtU"/>
                             <constraint firstItem="VHw-uG-sA2" firstAttribute="trailing" secondItem="5Dr-9g-lea" secondAttribute="trailing" id="vg4-ek-wbP"/>
                         </constraints>
                     </view>
@@ -98,6 +115,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="restaurantComments" destination="6xj-fd-FAO" id="oUH-aH-mpd"/>
                         <outlet property="restaurantName" destination="VHw-uG-sA2" id="BqP-ni-jI1"/>
                     </connections>
                 </viewController>

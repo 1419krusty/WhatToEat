@@ -11,7 +11,10 @@ import UIKit
 class AddRestaurantViewController: UIViewController {
 
    @IBOutlet weak var restaurantName: UITextField!
+   @IBOutlet weak var restaurantComments: UITextField!
+   
    var rest : Restaurant?
+   var comments : String?
    
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +31,7 @@ class AddRestaurantViewController: UIViewController {
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
       if segue.identifier == "SaveRestaurant" {
-         rest = Restaurant(name: self.restaurantName.text, meals: [])
+         rest = Restaurant(name: self.restaurantName.text, comments:self.restaurantComments.text, meals: [])
       }
     }
 }
