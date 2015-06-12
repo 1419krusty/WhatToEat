@@ -51,25 +51,35 @@ class MealViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Potentially incomplete method implementation.
-        // Return the number of sections.
-        return 1
+        return 2
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete method implementation.
-        // Return the number of rows in the section.
+      
+      if section == 1 {
+         // list of meals section
         return restaurants[restaurantIndex].meals.count
+      } else {
+         // restaurant details section
+         return 1;
+      }
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+      
+      if indexPath.section == 0 {
+        let theCell = tableView.dequeueReusableCellWithIdentifier("RestaurantInfoCell", forIndexPath: indexPath) as! UITableViewCell
+         theCell.textLabel!.text = restaurants[restaurantIndex].name
+         return theCell
+      }
+      else {
         let cell = tableView.dequeueReusableCellWithIdentifier("MealCell", forIndexPath: indexPath) as! MealCell
 
       let meal = restaurants[restaurantIndex].meals[indexPath.row] as Meal
       cell.mealNameLabel!.text = meal.name
       cell.ratingImageView.image = imageForRating(meal.rating)
-
         return cell
+      }
     }
    
     // MARK: - Navigation
