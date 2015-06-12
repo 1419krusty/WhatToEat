@@ -70,6 +70,7 @@ class MealViewController: UITableViewController {
       if indexPath.section == 0 {
         let theCell = tableView.dequeueReusableCellWithIdentifier("RestaurantInfoCell", forIndexPath: indexPath) as! UITableViewCell
          theCell.textLabel!.text = restaurants[restaurantIndex].name
+         theCell.detailTextLabel!.text = restaurants[restaurantIndex].comments
          return theCell
       }
       else {
