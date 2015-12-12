@@ -70,9 +70,9 @@ class EditMealViewController: UIViewController {
          let name = self.mealNameText.text
          let comments = self.mealCommentText.text
          
-         self.initialMeal.name = name
+         self.initialMeal.name = name!
          self.initialMeal.rating = self.rating
-         self.initialMeal.comment = comments
+         self.initialMeal.comment = comments!
       }
     }
    

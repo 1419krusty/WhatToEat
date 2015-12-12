@@ -59,7 +59,7 @@ class AddMealViewController: UIViewController {
       if segue.identifier == "SaveNewMeal" {
          let name = self.mealNameText.text
          let comments = self.mealCommentsText.text
-         self.newMeal = Meal(name: name, rating: self.rating, comment: comments)
+         self.newMeal = Meal(name: name!, rating: self.rating, comment: comments!)
       }
    }
    

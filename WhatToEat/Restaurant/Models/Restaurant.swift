@@ -20,7 +20,7 @@ class Restaurant : NSObject, NSCoding {
       self.meals = meals
    }
    
-   required convenience init(coder decoder: NSCoder) {
+   required convenience init?(coder decoder: NSCoder) {
       let name = decoder.decodeObjectForKey("name") as! String?
       let meals = decoder.decodeObjectForKey("meals") as! [Meal]!
       

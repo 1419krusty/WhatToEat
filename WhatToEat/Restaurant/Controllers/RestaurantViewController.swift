@@ -59,7 +59,7 @@ class RestaurantViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-      let cell = tableView.dequeueReusableCellWithIdentifier("RestaurantCell", forIndexPath: indexPath) as! UITableViewCell
+      let cell = tableView.dequeueReusableCellWithIdentifier("RestaurantCell", forIndexPath: indexPath) 
       
       let restaurant = restaurants[indexPath.row] as Restaurant
       cell.textLabel!.text = restaurant.name
@@ -76,7 +76,7 @@ class RestaurantViewController: UITableViewController {
          //         let mealVC = seq.childViewControllers[0] as! MealViewController
          let mealVC = segue.destinationViewController as! MealViewController
          mealVC.restaurants = self.restaurants
-         var indexPath = self.tableView .indexPathForCell(sender as! UITableViewCell)
+         let indexPath = self.tableView .indexPathForCell(sender as! UITableViewCell)
          mealVC.restaurantIndex = indexPath!.row
       }
    }
@@ -84,22 +84,25 @@ class RestaurantViewController: UITableViewController {
    func loadMyStuff() {
       // load restaurants
       let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
-      let documentsDirectory = paths[0] as! String
-      let path = documentsDirectory.stringByAppendingPathComponent("Restaurants.plist")
+      let documentsDirectory = paths[0] 
+      let path = (documentsDirectory as NSString).stringByAppendingPathComponent("Restaurants.plist")
       let fileManager = NSFileManager.defaultManager()
       
       // check if file exists
       if !fileManager.fileExistsAtPath(path) {
          // create an empty file if it doesn't exist
          if let bundle = NSBundle.mainBundle().pathForResource("DefaultFile", ofType: "plist") {
-            fileManager.copyItemAtPath(bundle, toPath: path, error:nil)
+            do {
+               try fileManager.copyItemAtPath(bundle, toPath: path)
+            } catch _ {
+            }
          }
       }
       
       if let rawData = NSData(contentsOfFile: path) {
          // do we get serialized data back from the attempted path?
          // if so, unarchive it into an AnyObject, and then convert to an array of HighScores, if possible
-         var resties: AnyObject? = NSKeyedUnarchiver.unarchiveObjectWithData(rawData);
+         let resties: AnyObject? = NSKeyedUnarchiver.unarchiveObjectWithData(rawData);
          self.restaurants = resties as? [Restaurant] ?? [];
       }
    }

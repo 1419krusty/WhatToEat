@@ -31,7 +31,7 @@ class AddRestaurantViewController: UIViewController {
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
       if segue.identifier == "SaveRestaurant" {
-         rest = Restaurant(name: self.restaurantName.text, comments:self.restaurantComments.text, meals: [])
+         rest = Restaurant(name: self.restaurantName.text!, comments:self.restaurantComments.text!, meals: [])
       }
     }
 }

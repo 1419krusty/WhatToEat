@@ -19,7 +19,7 @@ class Meal : NSObject, NSCoding {
       self.comment = comment
    }
    
-   required  convenience init(coder decoder: NSCoder) {
+   required  convenience init?(coder decoder: NSCoder) {
       let name = decoder.decodeObjectForKey("name") as! String
       let comment  = decoder.decodeObjectForKey("comment") as! String
       let rating = decoder.decodeObjectForKey("rating") as! Int

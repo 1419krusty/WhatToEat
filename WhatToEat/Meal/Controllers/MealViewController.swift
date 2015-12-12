@@ -28,13 +28,26 @@ class MealViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
 
+   @IBAction func toggleEditingMode(sender:AnyObject){
+      let editButton = sender as! UIBarButtonItem
+      if self.editing {
+         editButton.title = "Edit"
+         self.editing = false
+      }
+      else {
+         // TODO: text doesn't update
+         editButton.title = "Done"
+         self.editing = true
+      }
+   }
+   
    @IBAction func saveNewMeal(segue:UIStoryboardSegue){
       if let addMealVC  = segue.sourceViewController as? AddMealViewController {
          restaurants[restaurantIndex].meals.append( addMealVC.newMeal )
          
          saveMyStuff()
          
-         let indexPath = NSIndexPath(forRow: restaurants[restaurantIndex].meals.count-1, inSection: 0)
+         let indexPath = NSIndexPath(forRow: restaurants[restaurantIndex].meals.count-1, inSection: 1)
          tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
       }
    }
@@ -68,7 +81,7 @@ class MealViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
       
       if indexPath.section == 0 {
-        let theCell = tableView.dequeueReusableCellWithIdentifier("RestaurantInfoCell", forIndexPath: indexPath) as! UITableViewCell
+        let theCell = tableView.dequeueReusableCellWithIdentifier("RestaurantInfoCell", forIndexPath: indexPath) 
          theCell.textLabel!.text = restaurants[restaurantIndex].name
          theCell.detailTextLabel!.text = restaurants[restaurantIndex].comments
          return theCell
@@ -89,7 +102,7 @@ class MealViewController: UITableViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
       if segue.identifier == "EditMeal" {
          if let editMealVC = segue.destinationViewController as? EditMealViewController {
-            var indexPath = self.tableView .indexPathForCell(sender as! UITableViewCell)
+            let indexPath = self.tableView .indexPathForCell(sender as! UITableViewCell)
             editMealVC.initialMeal = restaurants[restaurantIndex].meals[indexPath!.row]
          }
       }
@@ -122,13 +135,10 @@ class MealViewController: UITableViewController {
       }
    }
    
-    /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return NO if you do not want the specified item to be editable.
-        return true
+      return  indexPath.section != 0
     }
-    */
 
     /*
     // Override to support editing the table view.
