@@ -20,6 +20,7 @@
 		1AD8FB1E1B0985E800DE8A87 /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD8FB1D1B0985E800DE8A87 /* Restaurant.swift */; };
 		1AD8FB201B09865500DE8A87 /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD8FB1F1B09865500DE8A87 /* Meal.swift */; };
 		1AD8FB221B09918000DE8A87 /* MealCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD8FB211B09918000DE8A87 /* MealCell.swift */; };
+		1AFDE8391C1C7AC80007B5EF /* EditRestaurantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AFDE8381C1C7AC80007B5EF /* EditRestaurantViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +51,7 @@
 		1AD8FB1D1B0985E800DE8A87 /* Restaurant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
 		1AD8FB1F1B09865500DE8A87 /* Meal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Meal.swift; path = Meal/Models/Meal.swift; sourceTree = "<group>"; };
 		1AD8FB211B09918000DE8A87 /* MealCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MealCell.swift; path = Meal/Controllers/MealCell.swift; sourceTree = "<group>"; };
+		1AFDE8381C1C7AC80007B5EF /* EditRestaurantViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditRestaurantViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,6 +171,7 @@
 			children = (
 				1AD8FB181B0985DC00DE8A87 /* AddRestaurantViewController.swift */,
 				1AD8FB191B0985DC00DE8A87 /* RestaurantViewController.swift */,
+				1AFDE8381C1C7AC80007B5EF /* EditRestaurantViewController.swift */,
 			);
 			name = Controllers;
 			path = Restaurant/Controllers;
@@ -287,6 +290,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1AD8FB1E1B0985E800DE8A87 /* Restaurant.swift in Sources */,
+				1AFDE8391C1C7AC80007B5EF /* EditRestaurantViewController.swift in Sources */,
 				1AD8FAC21B0505FA00DE8A87 /* AppDelegate.swift in Sources */,
 				1AD8FB141B09853900DE8A87 /* AddMealViewController.swift in Sources */,
 				1AD8FB161B09853900DE8A87 /* MealViewController.swift in Sources */,
@@ -423,10 +427,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = WhatToEat/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.maclonindustries.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -435,10 +441,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = WhatToEat/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.maclonindustries.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

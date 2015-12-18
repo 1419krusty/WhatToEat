@@ -21,10 +21,11 @@ class Restaurant : NSObject, NSCoding {
    }
    
    required convenience init?(coder decoder: NSCoder) {
+      // v1
       let name = decoder.decodeObjectForKey("name") as! String?
       let meals = decoder.decodeObjectForKey("meals") as! [Meal]!
       
-      // wasn't in v1
+      // added in v2
       var comments = decoder.decodeObjectForKey("comments") as! String?
       if comments == nil {
         comments = ""

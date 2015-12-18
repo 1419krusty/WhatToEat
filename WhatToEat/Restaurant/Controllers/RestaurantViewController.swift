@@ -15,25 +15,24 @@ class RestaurantViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
       
-      loadMyStuff()
-      
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+         loadRestaurants()
     }
 
+   override func viewWillAppear(animated: Bool) {
+      self.tableView.reloadData()
+   }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
 
+   // MARK: - New restaurant dialog handlers
+   
    @IBAction func saveNewRestaurant(segue:UIStoryboardSegue){
       if let addRestController = segue.sourceViewController as? AddRestaurantViewController {
          restaurants.append(addRestController.rest!)
          
-         saveMyStuff()
+         saveRestaurants()
          
          let indexPath = NSIndexPath(forItem: restaurants.count-1, inSection: 0)
          tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
@@ -63,7 +62,7 @@ class RestaurantViewController: UITableViewController {
       
       let restaurant = restaurants[indexPath.row] as Restaurant
       cell.textLabel!.text = restaurant.name
-
+      // TODO: add restaurant.comments here so can see what city it's in
         return cell
     }
    
@@ -72,8 +71,6 @@ class RestaurantViewController: UITableViewController {
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
       if segue.identifier == "SelectRestaurant" {
-         //         let navVC = segue.destinationViewController as! UINavigationController
-         //         let mealVC = seq.childViewControllers[0] as! MealViewController
          let mealVC = segue.destinationViewController as! MealViewController
          mealVC.restaurants = self.restaurants
          let indexPath = self.tableView .indexPathForCell(sender as! UITableViewCell)
@@ -81,7 +78,9 @@ class RestaurantViewController: UITableViewController {
       }
    }
 
-   func loadMyStuff() {
+   // MARK: - Private methods
+   
+   func loadRestaurants() {
       // load restaurants
       let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
       let documentsDirectory = paths[0] 
@@ -95,6 +94,7 @@ class RestaurantViewController: UITableViewController {
             do {
                try fileManager.copyItemAtPath(bundle, toPath: path)
             } catch _ {
+               // TODO: indicate problem
             }
          }
       }
@@ -107,7 +107,7 @@ class RestaurantViewController: UITableViewController {
       }
    }
    
-   func saveMyStuff() {
+   func saveRestaurants() {
       // find the save directory our app has permission to use, and save the serialized version of self.scores - the HighScores array.
       let saveData = NSKeyedArchiver.archivedDataWithRootObject(self.restaurants);
       let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true) as NSArray;
@@ -151,5 +151,4 @@ class RestaurantViewController: UITableViewController {
         return true
     }
     */
-
 }

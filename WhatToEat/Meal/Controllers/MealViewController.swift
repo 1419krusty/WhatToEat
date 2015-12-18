@@ -15,12 +15,6 @@ class MealViewController: UITableViewController {
    
    override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
 
     override func didReceiveMemoryWarning() {
@@ -28,18 +22,7 @@ class MealViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
 
-   @IBAction func toggleEditingMode(sender:AnyObject){
-      let editButton = sender as! UIBarButtonItem
-      if self.editing {
-         editButton.title = "Edit"
-         self.editing = false
-      }
-      else {
-         // TODO: text doesn't update
-         editButton.title = "Done"
-         self.editing = true
-      }
-   }
+   // MARK: - New Meal dialog handlers
    
    @IBAction func saveNewMeal(segue:UIStoryboardSegue){
       if let addMealVC  = segue.sourceViewController as? AddMealViewController {
@@ -59,6 +42,18 @@ class MealViewController: UITableViewController {
    @IBAction func saveEdittedMeal(segue:UIStoryboardSegue){
        self.tableView.reloadData()
       saveMyStuff()
+   }
+   
+   @IBAction func saveEdittedRestaurant(segue:UIStoryboardSegue){
+      if let editRestVC = segue.sourceViewController as? EditRestaurantViewController {
+         
+      restaurants[restaurantIndex].name = editRestVC.initialRestaurant.name
+      restaurants[restaurantIndex].comments = editRestVC.initialRestaurant.comments
+
+      saveMyStuff()
+         
+      self.tableView.reloadData()
+      }
    }
    
     // MARK: - Table view data source
@@ -106,6 +101,11 @@ class MealViewController: UITableViewController {
             editMealVC.initialMeal = restaurants[restaurantIndex].meals[indexPath!.row]
          }
       }
+      else if segue.identifier == "EditRestaurant" {
+         if let editRestaurantVC = segue.destinationViewController as? EditRestaurantViewController {
+            editRestaurantVC.initialRestaurant = restaurants[restaurantIndex]
+         }
+      }
    }
    
    func saveMyStuff() {
@@ -118,6 +118,7 @@ class MealViewController: UITableViewController {
       saveData.writeToFile(path, atomically: true);
    }
    
+   // TODO: move to a custom UIImageView
    func imageForRating(rating:Int) -> UIImage? {
       switch rating {
       case 1:

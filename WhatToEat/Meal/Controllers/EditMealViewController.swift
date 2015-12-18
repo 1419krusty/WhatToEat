@@ -93,5 +93,4 @@ class EditMealViewController: UIViewController {
          return nil
       }
    }
-
 }

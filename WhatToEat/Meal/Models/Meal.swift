@@ -20,9 +20,11 @@ class Meal : NSObject, NSCoding {
    }
    
    required  convenience init?(coder decoder: NSCoder) {
+      // v1
       let name = decoder.decodeObjectForKey("name") as! String
       let comment  = decoder.decodeObjectForKey("comment") as! String
       let rating = decoder.decodeObjectForKey("rating") as! Int
+      
       self.init(name: name, rating:rating, comment: comment)
    }
    
