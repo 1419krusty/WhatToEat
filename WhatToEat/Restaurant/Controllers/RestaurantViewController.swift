@@ -62,7 +62,8 @@ class RestaurantViewController: UITableViewController {
       
       let restaurant = restaurants[indexPath.row] as Restaurant
       cell.textLabel!.text = restaurant.name
-      // TODO: add restaurant.comments here so can see what city it's in
+      cell.detailTextLabel!.text = restaurant.comments
+      
         return cell
     }
    
