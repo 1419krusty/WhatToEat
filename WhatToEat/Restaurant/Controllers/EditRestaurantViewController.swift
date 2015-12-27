@@ -13,13 +13,13 @@ class EditRestaurantViewController: UIViewController {
    var initialRestaurant:Restaurant!
    
    @IBOutlet weak var restaurantNameText: UITextField!
-   @IBOutlet weak var restaurantCommentText: UITextField!
+   @IBOutlet weak var restaurantLocationNameText: UITextField!
    
     override func viewDidLoad() {
         super.viewDidLoad()
 
       self.restaurantNameText.text = initialRestaurant.name
-      self.restaurantCommentText.text = initialRestaurant.comments
+      self.restaurantLocationNameText.text = initialRestaurant.locationName
     }
 
     override func didReceiveMemoryWarning() {
@@ -33,10 +33,10 @@ class EditRestaurantViewController: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
       if segue.identifier == "SaveEdittedRestaurant" {
          let name = self.restaurantNameText.text
-         let comments = self.restaurantCommentText.text
+         let locationName = self.restaurantLocationNameText.text
          
          self.initialRestaurant.name = name!
-         self.initialRestaurant.comments = comments!
+         self.initialRestaurant.locationName = locationName!
       }
     }
 }

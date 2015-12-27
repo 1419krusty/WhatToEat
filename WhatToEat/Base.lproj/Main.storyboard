@@ -26,14 +26,14 @@
                                             <rect key="frame" x="15" y="5" width="126" height="20"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="fH7-I0-Cdw">
                                             <rect key="frame" x="15" y="25" width="45" height="14"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -89,7 +89,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6xj-fd-FAO">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6xj-fd-FAO" userLabel="Restaurant Location Name Text">
                                 <rect key="frame" x="16" y="176" width="288" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -124,8 +124,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="restaurantComments" destination="6xj-fd-FAO" id="oUH-aH-mpd"/>
-                        <outlet property="restaurantName" destination="VHw-uG-sA2" id="BqP-ni-jI1"/>
+                        <outlet property="restaurantLocationNameText" destination="6xj-fd-FAO" id="0nG-HY-X0T"/>
+                        <outlet property="restaurantNameText" destination="VHw-uG-sA2" id="Kua-Br-ygo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bxg-ld-pVf" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -378,7 +378,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Y2Q-lF-kJB" userLabel="Restaurant Comment Text">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Y2Q-lF-kJB" userLabel="Restaurant Location Name Text">
                                 <rect key="frame" x="12" y="176" width="288" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -408,8 +408,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="restaurantCommentText" destination="Y2Q-lF-kJB" id="UPn-i8-IFE"/>
-                        <outlet property="restaurantNameText" destination="OdT-r9-C6B" id="NfI-nU-1Hw"/>
+                        <outlet property="restaurantLocationNameText" destination="Y2Q-lF-kJB" id="yJe-Cy-IH7"/>
+                        <outlet property="restaurantNameText" destination="OdT-r9-C6B" id="KaF-vl-IcO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Ob-QJ-hK8" userLabel="First Responder" sceneMemberID="firstResponder"/>

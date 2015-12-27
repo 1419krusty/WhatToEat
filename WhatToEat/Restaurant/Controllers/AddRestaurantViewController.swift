@@ -7,14 +7,15 @@
 //
 
 import UIKit
+import CoreLocation
 
 class AddRestaurantViewController: UIViewController {
 
-   @IBOutlet weak var restaurantName: UITextField!
-   @IBOutlet weak var restaurantComments: UITextField!
+   @IBOutlet weak var restaurantNameText: UITextField!
+   @IBOutlet weak var restaurantLocationNameText: UITextField!
    
    var rest : Restaurant?
-   var comments : String?
+   var locationName : String?
    
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +32,11 @@ class AddRestaurantViewController: UIViewController {
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
       if segue.identifier == "SaveRestaurant" {
-         rest = Restaurant(name: self.restaurantName.text!, comments:self.restaurantComments.text!, meals: [])
+         rest = Restaurant(name: self.restaurantNameText.text!,
+            comments:"",
+            meals: [],
+            locationName: self.restaurantLocationNameText.text!,
+            locationCoordinate:kCLLocationCoordinate2DInvalid)
       }
     }
 }

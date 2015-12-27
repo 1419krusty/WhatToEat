@@ -9,26 +9,26 @@
 import UIKit
 
 class MealViewController: UITableViewController {
-
+   
    var restaurants : [Restaurant]!
    var restaurantIndex : Int!
    
    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
+      super.viewDidLoad()
+   }
+   
+   override func didReceiveMemoryWarning() {
+      super.didReceiveMemoryWarning()
+      // Dispose of any resources that can be recreated.
+   }
+   
    // MARK: - New Meal dialog handlers
    
    @IBAction func saveNewMeal(segue:UIStoryboardSegue){
       if let addMealVC  = segue.sourceViewController as? AddMealViewController {
          restaurants[restaurantIndex].meals.append( addMealVC.newMeal )
          
-         saveMyStuff()
+         saveRestaurants()
          
          let indexPath = NSIndexPath(forRow: restaurants[restaurantIndex].meals.count-1, inSection: 1)
          tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
@@ -40,61 +40,62 @@ class MealViewController: UITableViewController {
    }
    
    @IBAction func saveEdittedMeal(segue:UIStoryboardSegue){
-       self.tableView.reloadData()
-      saveMyStuff()
+      self.tableView.reloadData()
+      saveRestaurants()
    }
    
    @IBAction func saveEdittedRestaurant(segue:UIStoryboardSegue){
       if let editRestVC = segue.sourceViewController as? EditRestaurantViewController {
          
-      restaurants[restaurantIndex].name = editRestVC.initialRestaurant.name
-      restaurants[restaurantIndex].comments = editRestVC.initialRestaurant.comments
-
-      saveMyStuff()
+         restaurants[restaurantIndex].name = editRestVC.initialRestaurant.name
+         restaurants[restaurantIndex].locationName = editRestVC.initialRestaurant.locationName
+         restaurants[restaurantIndex].comments = editRestVC.initialRestaurant.comments
          
-      self.tableView.reloadData()
+         saveRestaurants()
+         
+         self.tableView.reloadData()
       }
    }
    
-    // MARK: - Table view data source
-
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 2
-    }
-
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+   // MARK: - Table view data source
+   
+   override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+      return 2
+   }
+   
+   override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
       
       if section == 1 {
          // list of meals section
-        return restaurants[restaurantIndex].meals.count
+         return restaurants[restaurantIndex].meals.count
       } else {
          // restaurant details section
          return 1;
       }
-    }
-
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+   }
+   
+   override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
       
       if indexPath.section == 0 {
-        let theCell = tableView.dequeueReusableCellWithIdentifier("RestaurantInfoCell", forIndexPath: indexPath) 
+         let theCell = tableView.dequeueReusableCellWithIdentifier("RestaurantInfoCell", forIndexPath: indexPath)
          theCell.textLabel!.text = restaurants[restaurantIndex].name
-         theCell.detailTextLabel!.text = restaurants[restaurantIndex].comments
+         theCell.detailTextLabel!.text = restaurants[restaurantIndex].locationName
          return theCell
       }
       else {
-        let cell = tableView.dequeueReusableCellWithIdentifier("MealCell", forIndexPath: indexPath) as! MealCell
-
-      let meal = restaurants[restaurantIndex].meals[indexPath.row] as Meal
-      cell.mealNameLabel!.text = meal.name
-      cell.ratingImageView.image = imageForRating(meal.rating)
-        return cell
+         let cell = tableView.dequeueReusableCellWithIdentifier("MealCell", forIndexPath: indexPath) as! MealCell
+         
+         let meal = restaurants[restaurantIndex].meals[indexPath.row] as Meal
+         cell.mealNameLabel!.text = meal.name
+         cell.ratingImageView.image = imageForRating(meal.rating)
+         return cell
       }
-    }
+   }
    
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+   // MARK: - Navigation
+   
+   // In a storyboard-based application, you will often want to do a little preparation before navigation
+   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
       if segue.identifier == "EditMeal" {
          if let editMealVC = segue.destinationViewController as? EditMealViewController {
             let indexPath = self.tableView .indexPathForCell(sender as! UITableViewCell)
@@ -108,12 +109,13 @@ class MealViewController: UITableViewController {
       }
    }
    
-   func saveMyStuff() {
+   // TODO: move to common method
+   func saveRestaurants() {
       
-      let saveData = NSKeyedArchiver.archivedDataWithRootObject(  restaurants);
+      let saveData = NSKeyedArchiver.archivedDataWithRootObject(  restaurants );
       let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true) as NSArray;
       let documentsDirectory = paths.objectAtIndex(0) as! NSString;
-      let path = documentsDirectory.stringByAppendingPathComponent("Restaurants.plist");
+      let path = documentsDirectory.stringByAppendingPathComponent("WhatToEat.plist");
       
       saveData.writeToFile(path, atomically: true);
    }
@@ -136,36 +138,35 @@ class MealViewController: UITableViewController {
       }
    }
    
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+   // Override to support conditional editing of the table view.
+   override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
       return  indexPath.section != 0
-    }
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return NO if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
+   }
+   
+   /*
+   // Override to support editing the table view.
+   override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+   if editingStyle == .Delete {
+   // Delete the row from the data source
+   tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+   } else if editingStyle == .Insert {
+   // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+   }
+   }
+   */
+   
+   /*
+   // Override to support rearranging the table view.
+   override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
+   
+   }
+   */
+   
+   /*
+   // Override to support conditional rearranging of the table view.
+   override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+   // Return NO if you do not want the item to be re-orderable.
+   return true
+   }
+   */
 }

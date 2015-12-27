@@ -62,7 +62,7 @@ class RestaurantViewController: UITableViewController {
       
       let restaurant = restaurants[indexPath.row] as Restaurant
       cell.textLabel!.text = restaurant.name
-      cell.detailTextLabel!.text = restaurant.comments
+      cell.detailTextLabel!.text = restaurant.locationName
       
         return cell
     }
@@ -82,16 +82,15 @@ class RestaurantViewController: UITableViewController {
    // MARK: - Private methods
    
    func loadRestaurants() {
-      // load restaurants
       let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
       let documentsDirectory = paths[0] 
-      let path = (documentsDirectory as NSString).stringByAppendingPathComponent("Restaurants.plist")
+      let path = (documentsDirectory as NSString).stringByAppendingPathComponent("WhatToEat.plist")
       let fileManager = NSFileManager.defaultManager()
       
-      // check if file exists
+      // check if file exist
       if !fileManager.fileExistsAtPath(path) {
          // create an empty file if it doesn't exist
-         if let bundle = NSBundle.mainBundle().pathForResource("DefaultFile", ofType: "plist") {
+         if let bundle = NSBundle.mainBundle().pathForResource(nil, ofType: "plist") {
             do {
                try fileManager.copyItemAtPath(bundle, toPath: path)
             } catch _ {
@@ -102,18 +101,19 @@ class RestaurantViewController: UITableViewController {
       
       if let rawData = NSData(contentsOfFile: path) {
          // do we get serialized data back from the attempted path?
-         // if so, unarchive it into an AnyObject, and then convert to an array of HighScores, if possible
+         // if so, unarchive it into an AnyObject, and then convert to an array of Restaurant, if possible
          let resties: AnyObject? = NSKeyedUnarchiver.unarchiveObjectWithData(rawData);
          self.restaurants = resties as? [Restaurant] ?? [];
       }
    }
    
+   // TODO: move to common method
    func saveRestaurants() {
-      // find the save directory our app has permission to use, and save the serialized version of self.scores - the HighScores array.
+      
       let saveData = NSKeyedArchiver.archivedDataWithRootObject(self.restaurants);
       let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true) as NSArray;
       let documentsDirectory = paths.objectAtIndex(0) as! NSString;
-      let path = documentsDirectory.stringByAppendingPathComponent("Restaurants.plist");
+      let path = documentsDirectory.stringByAppendingPathComponent("WhatToEat.plist");
       
       saveData.writeToFile(path, atomically: true);
    }
