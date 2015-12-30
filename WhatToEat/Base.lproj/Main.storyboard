@@ -94,19 +94,38 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GPS location" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t0U-Xc-eQZ">
+                                <rect key="frame" x="12" y="273" width="288" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rQv-7i-9UA">
+                                <rect key="frame" x="12" y="302" width="288" height="30"/>
+                                <state key="normal" title="Get Location"/>
+                                <connections>
+                                    <action selector="gpsClicked:" destination="oJq-Rw-Zy2" eventType="touchUpInside" id="aDU-dz-w4p"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="rQv-7i-9UA" firstAttribute="leading" secondItem="fZO-OO-9pr" secondAttribute="leadingMargin" constant="-4" id="1dq-hy-cFu"/>
                             <constraint firstItem="VHw-uG-sA2" firstAttribute="top" secondItem="5Dr-9g-lea" secondAttribute="bottom" constant="8" id="GDz-eZ-YT5"/>
                             <constraint firstItem="y7H-49-e3n" firstAttribute="top" secondItem="VHw-uG-sA2" secondAttribute="bottom" constant="16" id="HUT-NA-csV"/>
+                            <constraint firstItem="t0U-Xc-eQZ" firstAttribute="top" secondItem="6xj-fd-FAO" secondAttribute="bottom" constant="67" id="LA3-qc-SgF"/>
                             <constraint firstItem="5Dr-9g-lea" firstAttribute="leading" secondItem="fZO-OO-9pr" secondAttribute="leadingMargin" id="Lzx-B9-3zL"/>
                             <constraint firstItem="5Dr-9g-lea" firstAttribute="trailing" secondItem="y7H-49-e3n" secondAttribute="trailing" id="N86-xY-czG"/>
                             <constraint firstItem="5Dr-9g-lea" firstAttribute="leading" secondItem="6xj-fd-FAO" secondAttribute="leading" id="PPH-ET-3kR"/>
                             <constraint firstItem="6xj-fd-FAO" firstAttribute="top" secondItem="y7H-49-e3n" secondAttribute="bottom" constant="8" id="PVi-mN-Gu4"/>
+                            <constraint firstItem="t0U-Xc-eQZ" firstAttribute="leading" secondItem="fZO-OO-9pr" secondAttribute="leadingMargin" constant="-4" id="Pc7-HV-FVT"/>
                             <constraint firstItem="5Dr-9g-lea" firstAttribute="leading" secondItem="y7H-49-e3n" secondAttribute="leading" id="QcS-al-rzv"/>
+                            <constraint firstItem="rQv-7i-9UA" firstAttribute="trailing" secondItem="fZO-OO-9pr" secondAttribute="trailingMargin" constant="-4" id="S3B-oF-klQ"/>
+                            <constraint firstItem="t0U-Xc-eQZ" firstAttribute="trailing" secondItem="fZO-OO-9pr" secondAttribute="trailingMargin" constant="-4" id="SYe-4A-jgx"/>
                             <constraint firstItem="VHw-uG-sA2" firstAttribute="leading" secondItem="5Dr-9g-lea" secondAttribute="leading" id="VOO-sx-tbT"/>
                             <constraint firstItem="5Dr-9g-lea" firstAttribute="top" secondItem="Ufb-Lr-FOe" secondAttribute="bottom" constant="8" id="hsJ-MW-wzx"/>
                             <constraint firstItem="5Dr-9g-lea" firstAttribute="trailing" secondItem="fZO-OO-9pr" secondAttribute="trailingMargin" id="mTx-bh-TKW"/>
+                            <constraint firstItem="rQv-7i-9UA" firstAttribute="top" secondItem="t0U-Xc-eQZ" secondAttribute="bottom" constant="8" id="que-Ed-osK"/>
                             <constraint firstItem="5Dr-9g-lea" firstAttribute="trailing" secondItem="6xj-fd-FAO" secondAttribute="trailing" id="uly-bZ-EtU"/>
                             <constraint firstItem="VHw-uG-sA2" firstAttribute="trailing" secondItem="5Dr-9g-lea" secondAttribute="trailing" id="vg4-ek-wbP"/>
                         </constraints>
@@ -117,13 +136,14 @@
                                 <segue destination="9CT-Vo-oXB" kind="unwind" unwindAction="cancelNewRestaurant:" id="Pur-Hc-mhG"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="w2J-ld-qv5">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="w2J-ld-qv5">
                             <connections>
                                 <segue destination="9CT-Vo-oXB" kind="unwind" identifier="SaveRestaurant" unwindAction="saveNewRestaurant:" id="tPB-Wa-shs"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="restaurantGPSLocationLabel" destination="t0U-Xc-eQZ" id="Rzi-YT-EkL"/>
                         <outlet property="restaurantLocationNameText" destination="6xj-fd-FAO" id="0nG-HY-X0T"/>
                         <outlet property="restaurantNameText" destination="VHw-uG-sA2" id="Kua-Br-ygo"/>
                     </connections>
@@ -131,7 +151,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bxg-ld-pVf" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="9CT-Vo-oXB" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1795" y="380"/>
+            <point key="canvasLocation" x="1814" y="380"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="QTx-dy-6FZ">
@@ -383,21 +403,40 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="THx-Zm-pXb">
+                                <rect key="frame" x="12" y="302" width="288" height="30"/>
+                                <state key="normal" title="Get Location"/>
+                                <connections>
+                                    <action selector="gpsClicked:" destination="5lr-En-y5r" eventType="touchUpInside" id="uNf-hW-q1I"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GPS Location" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bxc-si-Wh1">
+                                <rect key="frame" x="12" y="273" width="288" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Bxc-si-Wh1" firstAttribute="leading" secondItem="14L-fJ-yzs" secondAttribute="leadingMargin" constant="-4" id="0XR-AQ-O9J"/>
+                            <constraint firstItem="THx-Zm-pXb" firstAttribute="trailing" secondItem="14L-fJ-yzs" secondAttribute="trailingMargin" constant="-4" id="14Z-dd-0C0"/>
                             <constraint firstItem="67z-2F-ipz" firstAttribute="top" secondItem="TZv-6c-IhF" secondAttribute="bottom" constant="8" id="7VB-cY-BxQ"/>
+                            <constraint firstItem="THx-Zm-pXb" firstAttribute="top" secondItem="Bxc-si-Wh1" secondAttribute="bottom" constant="8" id="8ab-21-stM"/>
                             <constraint firstItem="Y2Q-lF-kJB" firstAttribute="top" secondItem="QbS-ht-Cf7" secondAttribute="bottom" constant="8" id="ABB-Hx-wze"/>
                             <constraint firstItem="OdT-r9-C6B" firstAttribute="leading" secondItem="14L-fJ-yzs" secondAttribute="leadingMargin" constant="-4" id="BSm-le-5Fd"/>
                             <constraint firstItem="OdT-r9-C6B" firstAttribute="trailing" secondItem="14L-fJ-yzs" secondAttribute="trailingMargin" constant="-4" id="C9v-mt-8Q9"/>
                             <constraint firstItem="QbS-ht-Cf7" firstAttribute="leading" secondItem="14L-fJ-yzs" secondAttribute="leadingMargin" constant="-4" id="Etn-r8-EbI"/>
                             <constraint firstItem="OdT-r9-C6B" firstAttribute="top" secondItem="67z-2F-ipz" secondAttribute="bottom" constant="8" id="Kpg-WS-1dI"/>
                             <constraint firstItem="67z-2F-ipz" firstAttribute="leading" secondItem="14L-fJ-yzs" secondAttribute="leadingMargin" constant="-4" id="WtJ-uR-KMB"/>
+                            <constraint firstItem="Bxc-si-Wh1" firstAttribute="top" secondItem="Y2Q-lF-kJB" secondAttribute="bottom" constant="67" id="YdE-Hz-m1X"/>
                             <constraint firstItem="Y2Q-lF-kJB" firstAttribute="trailing" secondItem="14L-fJ-yzs" secondAttribute="trailingMargin" constant="-4" id="dIb-0I-bgP"/>
                             <constraint firstItem="Y2Q-lF-kJB" firstAttribute="leading" secondItem="14L-fJ-yzs" secondAttribute="leadingMargin" constant="-4" id="ghv-mk-uwG"/>
                             <constraint firstItem="QbS-ht-Cf7" firstAttribute="trailing" secondItem="14L-fJ-yzs" secondAttribute="trailingMargin" constant="-4" id="i8d-9a-8dJ"/>
                             <constraint firstItem="QbS-ht-Cf7" firstAttribute="top" secondItem="OdT-r9-C6B" secondAttribute="bottom" constant="16" id="jFA-7E-ivp"/>
+                            <constraint firstItem="Bxc-si-Wh1" firstAttribute="trailing" secondItem="14L-fJ-yzs" secondAttribute="trailingMargin" constant="-4" id="jsJ-dr-48o"/>
                             <constraint firstItem="67z-2F-ipz" firstAttribute="trailing" secondItem="14L-fJ-yzs" secondAttribute="trailingMargin" constant="-4" id="r7x-gn-s6H"/>
+                            <constraint firstItem="THx-Zm-pXb" firstAttribute="leading" secondItem="14L-fJ-yzs" secondAttribute="leadingMargin" constant="-4" id="yXq-li-IX0"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Edit Restaurant" id="p2u-Uh-xvI">
@@ -408,6 +447,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="restaurantGPSLocationLabel" destination="Bxc-si-Wh1" id="k3z-Oh-UX3"/>
                         <outlet property="restaurantLocationNameText" destination="Y2Q-lF-kJB" id="yJe-Cy-IH7"/>
                         <outlet property="restaurantNameText" destination="OdT-r9-C6B" id="KaF-vl-IcO"/>
                     </connections>

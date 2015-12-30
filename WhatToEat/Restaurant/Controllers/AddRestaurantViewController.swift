@@ -9,34 +9,63 @@
 import UIKit
 import CoreLocation
 
-class AddRestaurantViewController: UIViewController {
-
+class AddRestaurantViewController: UIViewController, CLLocationManagerDelegate {
+   
    @IBOutlet weak var restaurantNameText: UITextField!
    @IBOutlet weak var restaurantLocationNameText: UITextField!
+   @IBOutlet weak var restaurantGPSLocationLabel: UILabel!
    
    var rest : Restaurant?
-   var locationName : String?
+   var editedLocationCoordinate : CLLocation?
    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+   var locMgr: CLLocationManager!
    
-    // MARK: - Navigation
-
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+   override func viewDidLoad() {
+      super.viewDidLoad()
+      
+      locMgr = CLLocationManager()
+      locMgr.delegate = self
+      locMgr.desiredAccuracy = kCLLocationAccuracyBest
+   }
+   
+   override func didReceiveMemoryWarning() {
+      super.didReceiveMemoryWarning()
+      // Dispose of any resources that can be recreated.
+   }
+   
+   @IBAction func gpsClicked( sender: UIButton ){
+      locMgr.requestLocation()
+   }
+   
+   // MARK: - Navigation
+   
+   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
       if segue.identifier == "SaveRestaurant" {
          rest = Restaurant(name: self.restaurantNameText.text!,
             comments:"",
             meals: [],
             locationName: self.restaurantLocationNameText.text!,
-            locationCoordinate:kCLLocationCoordinate2DInvalid)
+            locationCoordinate:editedLocationCoordinate)
       }
-    }
+   }
+   
+   // MARK: - LocationManager
+   
+   func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
+      locMgr.stopUpdatingLocation()
+      
+      print(error)
+   }
+   
+   func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+      locMgr.stopUpdatingLocation()
+      
+      let locationArray = locations as NSArray
+      let locationObj = locationArray.lastObject as! CLLocation
+      let coord = locationObj.coordinate
+      
+      self.editedLocationCoordinate = locationObj
+      
+      self.restaurantGPSLocationLabel.text = "\(coord.latitude), \(coord.longitude)"
+   }
 }
