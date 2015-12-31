@@ -77,13 +77,13 @@ class RestaurantViewController: UITableViewController, CLLocationManagerDelegate
    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
       // #warning Incomplete method implementation.
       // Return the number of rows in the section.
-      return restaurants.count
+      return self.restaurants.count
    }
    
    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
       let cell = tableView.dequeueReusableCellWithIdentifier("RestaurantCell", forIndexPath: indexPath)
       
-      let restaurant = restaurants[indexPath.row] as Restaurant
+      let restaurant = self.restaurants[indexPath.row] as Restaurant
       cell.textLabel!.text = restaurant.name
       cell.detailTextLabel!.text = restaurant.locationName
       
@@ -154,7 +154,9 @@ class RestaurantViewController: UITableViewController, CLLocationManagerDelegate
          // do we get serialized data back from the attempted path?
          // if so, unarchive it into an AnyObject, and then convert to an array of Restaurant, if possible
          let resties: AnyObject? = NSKeyedUnarchiver.unarchiveObjectWithData(rawData);
-         self.restaurants = resties as? [Restaurant] ?? [];
+         let unsortedRestaurants = resties as? [Restaurant] ?? [];
+         
+         self.restaurants = unsortedRestaurants.sort {$0.name < $1.name}
       }
    }
    
