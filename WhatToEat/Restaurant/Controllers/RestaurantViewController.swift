@@ -22,29 +22,31 @@ class RestaurantViewController: UITableViewController, CLLocationManagerDelegate
       
       loadRestaurants()
       
+      self.refreshControl = UIRefreshControl()
+      self.refreshControl?.attributedTitle = NSMutableAttributedString(
+         string: "Getting current location",
+         attributes: [NSFontAttributeName:UIFont(
+            name: "Georgia",
+            size: 18.0)!])
+      self.refreshControl!.addTarget(self, action: Selector("theRefresh"), forControlEvents: UIControlEvents.ValueChanged)
+      
       locMgr = CLLocationManager()
       locMgr.delegate = self
       locMgr.desiredAccuracy = kCLLocationAccuracyBest
       
       locMgr.requestWhenInUseAuthorization()
-      
+   }
+   
+   func theRefresh(){
+         locMgr.requestLocation()
    }
    
    override func viewWillAppear(animated: Bool) {
       self.tableView.reloadData()
    }
    
-   override func viewDidAppear(animated: Bool) {
-      // Need to be sure table view is loaded
-      if self.firstAppearance{
-         self.firstAppearance = false
-         locMgr.requestLocation()
-      }
-   }
-   
    override func didReceiveMemoryWarning() {
       super.didReceiveMemoryWarning()
-      // Dispose of any resources that can be recreated.
    }
    
    // MARK: - New restaurant dialog handlers
@@ -108,18 +110,22 @@ class RestaurantViewController: UITableViewController, CLLocationManagerDelegate
    func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
       locMgr.stopUpdatingLocation()
       
-      print(error)
+      self.refreshControl?.endRefreshing()
+      
+      print("ERROR getting location: \(error)")
    }
    
    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
       locMgr.stopUpdatingLocation()
       
+      self.refreshControl?.endRefreshing()
+      
       let locationArray = locations as NSArray
       let locationObj = locationArray.lastObject as! CLLocation
       
-      if let i = self.restaurants.indexOf( { $0.locationCoordinate != nil && $0.locationCoordinate!.distanceFromLocation( locationObj) < 50 })
+      if let restaurantIndex = self.restaurants.indexOf( { $0.locationCoordinate != nil && $0.locationCoordinate!.distanceFromLocation( locationObj) < 50 })
       {
-         self.selectedRowIndex = i
+         self.selectedRowIndex = restaurantIndex
          performSegueWithIdentifier("SelectRestaurant", sender: nil)
       }
    }
