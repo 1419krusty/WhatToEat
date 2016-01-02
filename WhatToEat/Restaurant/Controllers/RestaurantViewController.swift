@@ -42,6 +42,8 @@ class RestaurantViewController: UITableViewController, CLLocationManagerDelegate
    }
    
    override func viewWillAppear(animated: Bool) {
+      self.restaurants = self.restaurants.sort {$0.name < $1.name}
+      
       self.tableView.reloadData()
    }
    
@@ -154,9 +156,7 @@ class RestaurantViewController: UITableViewController, CLLocationManagerDelegate
          // do we get serialized data back from the attempted path?
          // if so, unarchive it into an AnyObject, and then convert to an array of Restaurant, if possible
          let resties: AnyObject? = NSKeyedUnarchiver.unarchiveObjectWithData(rawData);
-         let unsortedRestaurants = resties as? [Restaurant] ?? [];
-         
-         self.restaurants = unsortedRestaurants.sort {$0.name < $1.name}
+         self.restaurants = resties as? [Restaurant] ?? [];
       }
    }
    
