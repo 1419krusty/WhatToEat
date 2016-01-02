@@ -109,13 +109,6 @@ class RestaurantViewController: UITableViewController, CLLocationManagerDelegate
    }
    
    // MARK: - LocationManager
-   func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
-      locMgr.stopUpdatingLocation()
-      
-      self.refreshControl?.endRefreshing()
-      
-      print("ERROR getting location: \(error)")
-   }
    
    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
       locMgr.stopUpdatingLocation()
@@ -130,6 +123,18 @@ class RestaurantViewController: UITableViewController, CLLocationManagerDelegate
          self.selectedRowIndex = restaurantIndex
          performSegueWithIdentifier("SelectRestaurant", sender: nil)
       }
+   }
+   
+   func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
+      locMgr.stopUpdatingLocation()
+      
+      self.refreshControl?.endRefreshing()
+      
+      let alert = UIAlertController(title: "Failed to get location", message: "\(error)", preferredStyle: UIAlertControllerStyle.Alert)
+      alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+      self.presentViewController(alert, animated: true, completion: nil)
+      
+      print("ERROR getting location: \(error)")
    }
    
    // MARK: - Private methods
