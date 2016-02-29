@@ -95,13 +95,13 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GPS location" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t0U-Xc-eQZ">
-                                <rect key="frame" x="12" y="273" width="288" height="21"/>
+                                <rect key="frame" x="12" y="236" width="288" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rQv-7i-9UA">
-                                <rect key="frame" x="12" y="302" width="288" height="30"/>
+                                <rect key="frame" x="12" y="265" width="288" height="30"/>
                                 <state key="normal" title="Get Location"/>
                                 <connections>
                                     <action selector="gpsClicked:" destination="oJq-Rw-Zy2" eventType="touchUpInside" id="aDU-dz-w4p"/>
@@ -113,7 +113,7 @@
                             <constraint firstItem="rQv-7i-9UA" firstAttribute="leading" secondItem="fZO-OO-9pr" secondAttribute="leadingMargin" constant="-4" id="1dq-hy-cFu"/>
                             <constraint firstItem="VHw-uG-sA2" firstAttribute="top" secondItem="5Dr-9g-lea" secondAttribute="bottom" constant="8" id="GDz-eZ-YT5"/>
                             <constraint firstItem="y7H-49-e3n" firstAttribute="top" secondItem="VHw-uG-sA2" secondAttribute="bottom" constant="16" id="HUT-NA-csV"/>
-                            <constraint firstItem="t0U-Xc-eQZ" firstAttribute="top" secondItem="6xj-fd-FAO" secondAttribute="bottom" constant="67" id="LA3-qc-SgF"/>
+                            <constraint firstItem="t0U-Xc-eQZ" firstAttribute="top" secondItem="6xj-fd-FAO" secondAttribute="bottom" constant="30" id="LA3-qc-SgF"/>
                             <constraint firstItem="5Dr-9g-lea" firstAttribute="leading" secondItem="fZO-OO-9pr" secondAttribute="leadingMargin" id="Lzx-B9-3zL"/>
                             <constraint firstItem="5Dr-9g-lea" firstAttribute="trailing" secondItem="y7H-49-e3n" secondAttribute="trailing" id="N86-xY-czG"/>
                             <constraint firstItem="5Dr-9g-lea" firstAttribute="leading" secondItem="6xj-fd-FAO" secondAttribute="leading" id="PPH-ET-3kR"/>
@@ -404,14 +404,14 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="THx-Zm-pXb">
-                                <rect key="frame" x="12" y="302" width="288" height="30"/>
+                                <rect key="frame" x="12" y="265" width="288" height="30"/>
                                 <state key="normal" title="Get Location"/>
                                 <connections>
                                     <action selector="gpsClicked:" destination="5lr-En-y5r" eventType="touchUpInside" id="uNf-hW-q1I"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GPS Location" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bxc-si-Wh1">
-                                <rect key="frame" x="12" y="273" width="288" height="21"/>
+                                <rect key="frame" x="12" y="236" width="288" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -429,7 +429,7 @@
                             <constraint firstItem="QbS-ht-Cf7" firstAttribute="leading" secondItem="14L-fJ-yzs" secondAttribute="leadingMargin" constant="-4" id="Etn-r8-EbI"/>
                             <constraint firstItem="OdT-r9-C6B" firstAttribute="top" secondItem="67z-2F-ipz" secondAttribute="bottom" constant="8" id="Kpg-WS-1dI"/>
                             <constraint firstItem="67z-2F-ipz" firstAttribute="leading" secondItem="14L-fJ-yzs" secondAttribute="leadingMargin" constant="-4" id="WtJ-uR-KMB"/>
-                            <constraint firstItem="Bxc-si-Wh1" firstAttribute="top" secondItem="Y2Q-lF-kJB" secondAttribute="bottom" constant="67" id="YdE-Hz-m1X"/>
+                            <constraint firstItem="Bxc-si-Wh1" firstAttribute="top" secondItem="Y2Q-lF-kJB" secondAttribute="bottom" constant="30" id="YdE-Hz-m1X"/>
                             <constraint firstItem="Y2Q-lF-kJB" firstAttribute="trailing" secondItem="14L-fJ-yzs" secondAttribute="trailingMargin" constant="-4" id="dIb-0I-bgP"/>
                             <constraint firstItem="Y2Q-lF-kJB" firstAttribute="leading" secondItem="14L-fJ-yzs" secondAttribute="leadingMargin" constant="-4" id="ghv-mk-uwG"/>
                             <constraint firstItem="QbS-ht-Cf7" firstAttribute="trailing" secondItem="14L-fJ-yzs" secondAttribute="trailingMargin" constant="-4" id="i8d-9a-8dJ"/>
