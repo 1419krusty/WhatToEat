@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1A68E4111C84D9340005A045 /* ButtonProgressMgr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A68E4101C84D9340005A045 /* ButtonProgressMgr.swift */; };
 		1AD8FAC21B0505FA00DE8A87 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD8FAC11B0505FA00DE8A87 /* AppDelegate.swift */; };
 		1AD8FAC71B0505FA00DE8A87 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1AD8FAC51B0505FA00DE8A87 /* Main.storyboard */; };
 		1AD8FAC91B0505FA00DE8A87 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1AD8FAC81B0505FA00DE8A87 /* Images.xcassets */; };
@@ -34,6 +35,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1A68E4101C84D9340005A045 /* ButtonProgressMgr.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ButtonProgressMgr.swift; path = Restaurant/ButtonProgressMgr.swift; sourceTree = "<group>"; };
 		1AD8FABC1B0505FA00DE8A87 /* WhatToEat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhatToEat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1AD8FAC01B0505FA00DE8A87 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1AD8FAC11B0505FA00DE8A87 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -134,6 +136,7 @@
 			children = (
 				1AD8FB171B0985DC00DE8A87 /* Controllers */,
 				1AD8FB1C1B0985E800DE8A87 /* Models */,
+				1A68E4101C84D9340005A045 /* ButtonProgressMgr.swift */,
 			);
 			name = Restaurant;
 			sourceTree = "<group>";
@@ -296,6 +299,7 @@
 				1AD8FB161B09853900DE8A87 /* MealViewController.swift in Sources */,
 				1AD8FB221B09918000DE8A87 /* MealCell.swift in Sources */,
 				1AD8FB201B09865500DE8A87 /* Meal.swift in Sources */,
+				1A68E4111C84D9340005A045 /* ButtonProgressMgr.swift in Sources */,
 				1AD8FB1B1B0985DC00DE8A87 /* RestaurantViewController.swift in Sources */,
 				1AD8FB151B09853900DE8A87 /* EditMealViewController.swift in Sources */,
 				1AD8FB1A1B0985DC00DE8A87 /* AddRestaurantViewController.swift in Sources */,

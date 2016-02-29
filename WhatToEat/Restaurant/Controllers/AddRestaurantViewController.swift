@@ -20,6 +20,7 @@ class AddRestaurantViewController: UIViewController, CLLocationManagerDelegate {
    var tapRecognizer: UITapGestureRecognizer!
    
    var locMgr: CLLocationManager!
+   var buttonMgr: ButtonProgressMgr!
    
    override func viewDidLoad() {
       super.viewDidLoad()
@@ -27,6 +28,8 @@ class AddRestaurantViewController: UIViewController, CLLocationManagerDelegate {
       locMgr = CLLocationManager()
       locMgr.delegate = self
       locMgr.desiredAccuracy = kCLLocationAccuracyBest
+      
+      buttonMgr = ButtonProgressMgr( withProgressMessage: "Looking...")
       
       let nc: NSNotificationCenter  = NSNotificationCenter.defaultCenter()
       
@@ -59,7 +62,8 @@ class AddRestaurantViewController: UIViewController, CLLocationManagerDelegate {
    }
    
    @IBAction func gpsClicked( sender: UIButton ){
-      locMgr.requestLocation()
+      self.buttonMgr.startedWithButton( sender )
+      self.locMgr.requestLocation()
    }
    
    // MARK: - Navigation
@@ -76,14 +80,8 @@ class AddRestaurantViewController: UIViewController, CLLocationManagerDelegate {
    
    // MARK: - LocationManager
    
-   func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
-      locMgr.stopUpdatingLocation()
-      
-      print(error)
-   }
-   
    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-      locMgr.stopUpdatingLocation()
+      self.locMgr.stopUpdatingLocation()
       
       let locationArray = locations as NSArray
       let locationObj = locationArray.lastObject as! CLLocation
@@ -92,5 +90,15 @@ class AddRestaurantViewController: UIViewController, CLLocationManagerDelegate {
       self.editedLocationCoordinate = locationObj
       
       self.restaurantGPSLocationLabel.text = "\(coord.latitude), \(coord.longitude)"
+      
+      self.buttonMgr.completed()
+   }
+   
+   func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
+      locMgr.stopUpdatingLocation()
+      
+      self.buttonMgr.completed()
+      
+      print(error)
    }
 }

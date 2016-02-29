@@ -20,6 +20,7 @@ class EditRestaurantViewController: UIViewController, CLLocationManagerDelegate 
    var tapRecognizer: UITapGestureRecognizer!
    
    var locMgr: CLLocationManager!
+   var btnMgr: ButtonProgressMgr!
    
    override func viewDidLoad() {
       super.viewDidLoad()
@@ -35,6 +36,8 @@ class EditRestaurantViewController: UIViewController, CLLocationManagerDelegate 
       locMgr = CLLocationManager()
       locMgr.delegate = self
       locMgr.desiredAccuracy = kCLLocationAccuracyBest
+      
+      btnMgr = ButtonProgressMgr( withProgressMessage: "Looking...")
       
       let nc: NSNotificationCenter  = NSNotificationCenter.defaultCenter()
       
@@ -62,7 +65,8 @@ class EditRestaurantViewController: UIViewController, CLLocationManagerDelegate 
    }
    
    @IBAction func gpsClicked( sender: UIButton ){
-      locMgr.requestLocation()
+      self.btnMgr.startedWithButton(sender)
+      self.locMgr.requestLocation()
    }
    
    // MARK: - Navigation
@@ -81,12 +85,6 @@ class EditRestaurantViewController: UIViewController, CLLocationManagerDelegate 
    
    // MARK: - LocationManager
    
-   func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
-      locMgr.stopUpdatingLocation()
-      
-      print(error)
-   }
-   
    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
       locMgr.stopUpdatingLocation()
       
@@ -97,5 +95,15 @@ class EditRestaurantViewController: UIViewController, CLLocationManagerDelegate 
       self.restaurantGPSLocationLabel.text = "\(coord.latitude), \(coord.longitude)"
       
       self.editedLocationCoordinate = locationObj
+      
+      self.btnMgr.completed()
+   }
+   
+   func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
+      self.locMgr.stopUpdatingLocation()
+      
+      self.btnMgr.completed()
+      
+      print(error)
    }
 }
