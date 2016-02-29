@@ -12,7 +12,7 @@ import CoreLocation
 class RestaurantViewController: UITableViewController, CLLocationManagerDelegate {
    
    var locMgr: CLLocationManager!
-   var restaurants : [Restaurant] = []
+   var restaurants: [Restaurant] = []
   
    var firstAppearance = true
    var selectedRowIndex = 0
@@ -118,7 +118,8 @@ class RestaurantViewController: UITableViewController, CLLocationManagerDelegate
       let locationArray = locations as NSArray
       let locationObj = locationArray.lastObject as! CLLocation
       
-      if let restaurantIndex = self.restaurants.indexOf( { $0.locationCoordinate != nil && $0.locationCoordinate!.distanceFromLocation( locationObj) < 50 })
+      let distanceFromMeInMeters = 50.0
+      if let restaurantIndex = self.restaurants.indexOf( { $0.locationCoordinate != nil && $0.locationCoordinate!.distanceFromLocation( locationObj) < distanceFromMeInMeters })
       {
          self.selectedRowIndex = restaurantIndex
          performSegueWithIdentifier("SelectRestaurant", sender: nil)

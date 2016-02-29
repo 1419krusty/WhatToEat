@@ -14,14 +14,14 @@ class AddMealViewController: UIViewController {
    @IBOutlet weak var ratingImage: UIImageView!
    @IBOutlet weak var mealCommentsText: UITextField!
    
-   var newMeal:Meal!
-   var rating:Int = 1
-   var tapRecognizer:UITapGestureRecognizer!
+   var newMeal: Meal!
+   var rating: Int = 1
+   var tapRecognizer: UITapGestureRecognizer!
    
     override func viewDidLoad() {
         super.viewDidLoad()
       
-      let nc:NSNotificationCenter  = NSNotificationCenter.defaultCenter()
+      let nc: NSNotificationCenter  = NSNotificationCenter.defaultCenter()
       
       nc.addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
       nc.addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)

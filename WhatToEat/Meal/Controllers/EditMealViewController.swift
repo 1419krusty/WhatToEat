@@ -10,9 +10,9 @@ import UIKit
 
 class EditMealViewController: UIViewController {
 
-   var initialMeal:Meal!
-   var rating:Int = 1
-   var tapRecognizer:UITapGestureRecognizer!
+   var initialMeal: Meal!
+   var rating: Int = 1
+   var tapRecognizer: UITapGestureRecognizer!
    
    @IBOutlet weak var mealNameText: UITextField!
    @IBOutlet weak var ratingImageView: UIImageView!

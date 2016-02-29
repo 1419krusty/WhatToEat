@@ -15,8 +15,9 @@ class EditRestaurantViewController: UIViewController, CLLocationManagerDelegate 
    @IBOutlet weak var restaurantLocationNameText: UITextField!
    @IBOutlet weak var restaurantGPSLocationLabel: UILabel!
    
-   var initialRestaurant:Restaurant!
-   var editedLocationCoordinate : CLLocation?
+   var initialRestaurant: Restaurant!
+   var editedLocationCoordinate: CLLocation?
+   var tapRecognizer: UITapGestureRecognizer!
    
    var locMgr: CLLocationManager!
    
@@ -34,6 +35,25 @@ class EditRestaurantViewController: UIViewController, CLLocationManagerDelegate 
       locMgr = CLLocationManager()
       locMgr.delegate = self
       locMgr.desiredAccuracy = kCLLocationAccuracyBest
+      
+      let nc: NSNotificationCenter  = NSNotificationCenter.defaultCenter()
+      
+      nc.addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
+      nc.addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
+      
+      tapRecognizer = UITapGestureRecognizer(target: self, action: "didTapAnywhere:")
+    }
+
+   func keyboardWillShow(note:NSNotification ) {
+      self.view.addGestureRecognizer(tapRecognizer)
+   }
+   
+   func keyboardWillHide(note:NSNotification ) {
+      self.view.removeGestureRecognizer(tapRecognizer)
+   }
+   
+   func didTapAnywhere (recognizer:UITapGestureRecognizer){
+      self.view.endEditing(true)
    }
    
    override func didReceiveMemoryWarning() {
