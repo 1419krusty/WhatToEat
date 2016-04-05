@@ -23,10 +23,10 @@ class AddMealViewController: UIViewController {
       
       let nc: NSNotificationCenter  = NSNotificationCenter.defaultCenter()
       
-      nc.addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
-      nc.addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
+      nc.addObserver(self, selector: #selector(AddMealViewController.keyboardWillShow(_:)), name: UIKeyboardWillShowNotification, object: nil)
+      nc.addObserver(self, selector: #selector(AddMealViewController.keyboardWillHide(_:)), name: UIKeyboardWillHideNotification, object: nil)
       
-      tapRecognizer = UITapGestureRecognizer(target: self, action: "didTapAnywhere:")
+      tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(AddMealViewController.didTapAnywhere(_:)))
     }
 
    func keyboardWillShow(note:NSNotification ) {
@@ -49,7 +49,7 @@ class AddMealViewController: UIViewController {
       if rating == 5 {
          self.rating = 1
       } else {
-        self.rating++
+        self.rating += 1
       }
       
       ratingImage.image = imageForRating(rating)

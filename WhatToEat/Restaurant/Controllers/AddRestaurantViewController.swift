@@ -33,10 +33,10 @@ class AddRestaurantViewController: UIViewController, CLLocationManagerDelegate {
       
       let nc: NSNotificationCenter  = NSNotificationCenter.defaultCenter()
       
-      nc.addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
-      nc.addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
+      nc.addObserver(self, selector: #selector(AddRestaurantViewController.keyboardWillShow(_:)), name: UIKeyboardWillShowNotification, object: nil)
+      nc.addObserver(self, selector: #selector(AddRestaurantViewController.keyboardWillHide(_:)), name: UIKeyboardWillHideNotification, object: nil)
       
-      tapRecognizer = UITapGestureRecognizer(target: self, action: "didTapAnywhere:")
+      tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(AddRestaurantViewController.didTapAnywhere(_:)))
     }
 
    func keyboardWillShow(note:NSNotification ) {

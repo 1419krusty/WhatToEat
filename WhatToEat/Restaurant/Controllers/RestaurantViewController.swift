@@ -28,7 +28,7 @@ class RestaurantViewController: UITableViewController, CLLocationManagerDelegate
          attributes: [NSFontAttributeName:UIFont(
             name: "Georgia",
             size: 18.0)!])
-      self.refreshControl!.addTarget(self, action: Selector("theRefresh"), forControlEvents: UIControlEvents.ValueChanged)
+      self.refreshControl!.addTarget(self, action: #selector(RestaurantViewController.theRefresh), forControlEvents: UIControlEvents.ValueChanged)
       
       locMgr = CLLocationManager()
       locMgr.delegate = self
