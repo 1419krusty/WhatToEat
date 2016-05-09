@@ -104,6 +104,17 @@ class RestaurantViewController: UITableViewController, CLLocationManagerDelegate
       return indexPath
    }
    
+   // MARK: - Motion handlers
+   
+   override func motionEnded(motion: UIEventSubtype, withEvent event: UIEvent?) {
+      if motion == .MotionShake {
+         
+         self.selectedRowIndex = Int( arc4random_uniform( UInt32( self.masterListOfRestaurants.count ) ) );
+         
+         performSegueWithIdentifier( "SelectRestaurant", sender: nil )
+      }
+   }
+   
    // MARK: - Navigation
    
    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
