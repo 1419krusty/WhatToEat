@@ -10,8 +10,8 @@ import UIKit
 
 class MealViewController: UITableViewController {
    
-   var restaurants : [Restaurant]!
-   var restaurantIndex : Int!
+   var masterListOfRestaurants : [Restaurant]!
+   var selectedRestaurant : Restaurant!
    
    override func viewDidLoad() {
       super.viewDidLoad()
@@ -19,18 +19,17 @@ class MealViewController: UITableViewController {
    
    override func didReceiveMemoryWarning() {
       super.didReceiveMemoryWarning()
-      // Dispose of any resources that can be recreated.
    }
    
    // MARK: - New Meal dialog handlers
    
    @IBAction func saveNewMeal(segue:UIStoryboardSegue){
       if let addMealVC  = segue.sourceViewController as? AddMealViewController {
-         restaurants[restaurantIndex].meals.append( addMealVC.newMeal )
+         selectedRestaurant.meals.append( addMealVC.newMeal )
          
          saveRestaurants()
          
-         let indexPath = NSIndexPath(forRow: restaurants[restaurantIndex].meals.count-1, inSection: 1)
+         let indexPath = NSIndexPath(forRow: selectedRestaurant.meals.count-1, inSection: 1)
          tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
       }
    }
@@ -47,9 +46,9 @@ class MealViewController: UITableViewController {
    @IBAction func saveEdittedRestaurant(segue:UIStoryboardSegue){
       if let editRestVC = segue.sourceViewController as? EditRestaurantViewController {
          
-         restaurants[restaurantIndex].name = editRestVC.initialRestaurant.name
-         restaurants[restaurantIndex].locationName = editRestVC.initialRestaurant.locationName
-         restaurants[restaurantIndex].comments = editRestVC.initialRestaurant.comments
+         selectedRestaurant.name = editRestVC.initialRestaurant.name
+         selectedRestaurant.locationName = editRestVC.initialRestaurant.locationName
+         selectedRestaurant.comments = editRestVC.initialRestaurant.comments
          
          saveRestaurants()
          
@@ -67,7 +66,7 @@ class MealViewController: UITableViewController {
       
       if section == 1 {
          // list of meals section
-         return restaurants[restaurantIndex].meals.count
+         return selectedRestaurant.meals.count
       } else {
          // restaurant details section
          return 1;
@@ -78,16 +77,19 @@ class MealViewController: UITableViewController {
       
       if indexPath.section == 0 {
          let theCell = tableView.dequeueReusableCellWithIdentifier("RestaurantInfoCell", forIndexPath: indexPath)
-         theCell.textLabel!.text = restaurants[restaurantIndex].name
-         theCell.detailTextLabel!.text = restaurants[restaurantIndex].locationName
+         
+         theCell.textLabel!.text = selectedRestaurant.name
+         theCell.detailTextLabel!.text = selectedRestaurant.locationName
+         
          return theCell
       }
       else {
          let cell = tableView.dequeueReusableCellWithIdentifier("MealCell", forIndexPath: indexPath) as! MealCell
          
-         let meal = restaurants[restaurantIndex].meals[indexPath.row] as Meal
+         let meal = selectedRestaurant.meals[indexPath.row] as Meal
          cell.mealNameLabel!.text = meal.name
          cell.ratingImageView.image = imageForRating(meal.rating)
+         
          return cell
       }
    }
@@ -99,12 +101,12 @@ class MealViewController: UITableViewController {
       if segue.identifier == "EditMeal" {
          if let editMealVC = segue.destinationViewController as? EditMealViewController {
             let indexPath = self.tableView .indexPathForCell(sender as! UITableViewCell)
-            editMealVC.initialMeal = restaurants[restaurantIndex].meals[indexPath!.row]
+            editMealVC.initialMeal = selectedRestaurant.meals[indexPath!.row]
          }
       }
       else if segue.identifier == "EditRestaurant" {
          if let editRestaurantVC = segue.destinationViewController as? EditRestaurantViewController {
-            editRestaurantVC.initialRestaurant = restaurants[restaurantIndex]
+            editRestaurantVC.initialRestaurant = selectedRestaurant
          }
       }
    }
@@ -112,9 +114,10 @@ class MealViewController: UITableViewController {
    // TODO: move to common method
    func saveRestaurants() {
       
-      let saveData = NSKeyedArchiver.archivedDataWithRootObject(  restaurants );
+      let saveData = NSKeyedArchiver.archivedDataWithRootObject(  self.masterListOfRestaurants );
       let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true) as NSArray;
       let documentsDirectory = paths.objectAtIndex(0) as! NSString;
+      
       let path = documentsDirectory.stringByAppendingPathComponent("WhatToEat.plist");
       
       saveData.writeToFile(path, atomically: true);
