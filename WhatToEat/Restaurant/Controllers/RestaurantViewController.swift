@@ -14,22 +14,20 @@ class RestaurantViewController: UITableViewController, CLLocationManagerDelegate
    var locMgr: CLLocationManager!
    var masterListOfRestaurants: [Restaurant] = []
   
-   var locationHandlerFunc:((CLLocation)->())!
-   var listSortFunc:((Restaurant,Restaurant, CLLocation)->Bool)!
+   var refreshPulledHandlerFunc:(()->())!
+   var listSortFunc:((Restaurant,Restaurant)->Bool)!
    
-   var currentLocation: CLLocation!
+   var currentLocation: CLLocation?
    
-   var selectedRowIndex = 0
-   
+   var selectedRestaurant: Restaurant?
+  
    override func viewDidLoad() {
       super.viewDidLoad()
       
-      self.locationHandlerFunc = nearestRestaurantLocHandler
+      self.refreshPulledHandlerFunc = self.sortByNearestLocation
       self.listSortFunc = byNameAscending
       
       loadRestaurants()
-      
-      self.currentLocation = CLLocation()
       
       locMgr = CLLocationManager()
       locMgr.delegate = self
@@ -47,12 +45,11 @@ class RestaurantViewController: UITableViewController, CLLocationManagerDelegate
    }
    
    func didPullToRefresh(){
-      locMgr.requestLocation()
+      self.refreshPulledHandlerFunc()
    }
-   
+  
    override func viewWillAppear(animated: Bool) {
-      self.masterListOfRestaurants = self.masterListOfRestaurants.sort{ self.listSortFunc( $0, $1, self.currentLocation ) }
-      
+      self.masterListOfRestaurants = self.masterListOfRestaurants.sort{ self.listSortFunc( $0, $1 ) }
       self.tableView.reloadData()
    }
    
@@ -100,7 +97,7 @@ class RestaurantViewController: UITableViewController, CLLocationManagerDelegate
    }
    
    override func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
-      self.selectedRowIndex = indexPath.row
+      self.selectedRestaurant = self.masterListOfRestaurants[indexPath.row]
       return indexPath
    }
    
@@ -108,8 +105,20 @@ class RestaurantViewController: UITableViewController, CLLocationManagerDelegate
    
    override func motionEnded(motion: UIEventSubtype, withEvent event: UIEvent?) {
       if motion == .MotionShake {
-         
-         self.selectedRowIndex = Int( arc4random_uniform( UInt32( self.masterListOfRestaurants.count ) ) );
+         var index = 0
+         if (  self.currentLocation != nil ) {
+            
+            // Select random item from near restaurants
+            let distanceFromHereInMeters = 48000.0 // meters (30 miles)
+            var closeRestaurants = self.masterListOfRestaurants.filter{ $0.locationCoordinate != nil && $0.locationCoordinate?.distanceFromLocation(self.currentLocation!) <= distanceFromHereInMeters }
+            index = Int( arc4random_uniform( UInt32( closeRestaurants.count ) ) )
+            self.selectedRestaurant = closeRestaurants[index]
+         } else {
+            
+            // Select random item from all restaurants
+            index = Int( arc4random_uniform( UInt32( self.masterListOfRestaurants.count ) ) )
+            self.selectedRestaurant = self.masterListOfRestaurants[ index ]
+         }
          
          performSegueWithIdentifier( "SelectRestaurant", sender: nil )
       }
@@ -125,7 +134,7 @@ class RestaurantViewController: UITableViewController, CLLocationManagerDelegate
          mealVC.masterListOfRestaurants = self.masterListOfRestaurants
          
          // Needs the selected restaurant to display and edit
-         mealVC.selectedRestaurant = self.masterListOfRestaurants[ self.selectedRowIndex ]
+          mealVC.selectedRestaurant = self.selectedRestaurant
       }
    }
    
@@ -141,35 +150,21 @@ class RestaurantViewController: UITableViewController, CLLocationManagerDelegate
       
       self.currentLocation = locationObj
       
-      self.locationHandlerFunc(locationObj)
-   }
-   
-   // MARK: - Location found handler methods
-   
-   func alphabeticLocationHandler( locationObj: CLLocation ){
-      // Next pull down will be handle as nearest
-      self.locationHandlerFunc = nearestRestaurantLocHandler
-      self.listSortFunc = byNameAscending
-      
-      self.masterListOfRestaurants = self.masterListOfRestaurants .sort{ byNameAscending( $0, r2: $1, currentLoc: self.currentLocation ) }
-       self.tableView.reloadData()
-   }
-   
-   func nearestRestaurantLocHandler(locationObj: CLLocation){
       // Next pull down will handle as alphabetical
-      self.locationHandlerFunc = alphabeticLocationHandler
+      self.refreshPulledHandlerFunc = sortListAlphabetically
       self.listSortFunc = byNearestFirst
       
-      self.masterListOfRestaurants = self.masterListOfRestaurants .sort{ byNearestFirst( $0, r2: $1, currentLoc: self.currentLocation ) }
+      // Sort master list by nearness
+      self.masterListOfRestaurants = self.masterListOfRestaurants .sort{ byNearestFirst( $0, r2: $1 ) }
       self.tableView.reloadData()
       
-      // if you are in the restaurant, show the restaurant
+      // If you are in a restaurant, select that restaurant
       let distanceFromMeInMeters = 50.0
       let closestRestaurant = self.masterListOfRestaurants[0] as Restaurant
       if (  closestRestaurant.locationCoordinate != nil &&
-             closestRestaurant.locationCoordinate!.distanceFromLocation( locationObj) <= distanceFromMeInMeters )
+             closestRestaurant.locationCoordinate!.distanceFromLocation( self.currentLocation! ) <= distanceFromMeInMeters )
       {
-         self.selectedRowIndex = 0
+         self.selectedRestaurant = self.masterListOfRestaurants[0]
          performSegueWithIdentifier("SelectRestaurant", sender: nil)
       }
    }
@@ -186,16 +181,33 @@ class RestaurantViewController: UITableViewController, CLLocationManagerDelegate
       print("ERROR getting location: \(error)")
    }
    
+   // MARK: - Refresh control handler function
    
-   // MARK: - Sorting methods
+   func sortListAlphabetically(){
+      self.refreshControl?.endRefreshing()
+      
+      self.refreshPulledHandlerFunc = sortByNearestLocation
+      self.listSortFunc = byNameAscending
+      self.currentLocation = nil
+      
+      self.masterListOfRestaurants = self.masterListOfRestaurants .sort{ byNameAscending( $0, r2: $1 ) }
+       self.tableView.reloadData()
+   }
    
-   func byNameAscending( r1:Restaurant, r2:Restaurant, currentLoc:CLLocation)  -> Bool {
+   func sortByNearestLocation()
+   {
+      locMgr.requestLocation()
+   }
+   
+   // MARK: - Sorting predicate methods
+   
+   func byNameAscending( r1:Restaurant, r2:Restaurant )  -> Bool {
       return r1.name < r2.name
    }
    
-   func byNearestFirst( r1:Restaurant, r2:Restaurant, currentLoc:CLLocation ) -> Bool {
+   func byNearestFirst( r1:Restaurant, r2:Restaurant ) -> Bool {
       return ( ( ( r1.locationCoordinate != nil && r2.locationCoordinate != nil ) &&
-                      ( r1.locationCoordinate!.distanceFromLocation( currentLoc ) < r2.locationCoordinate!.distanceFromLocation( currentLoc ) ) ) ||
+                      ( r1.locationCoordinate!.distanceFromLocation( self.currentLocation! ) < r2.locationCoordinate!.distanceFromLocation( self.currentLocation! ) ) ) ||
                  ( r1.locationCoordinate != nil && r2.locationCoordinate == nil) )
    }
    
